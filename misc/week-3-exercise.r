@@ -1,0 +1,58 @@
+# Your job is to update the TODOs below to recreate this visualization
+# https://show.rfor.us/4MwDlgt2
+
+# A couple notes:
+# 1. The house icon was added outside of R. Don't worry about adding it.
+# 2. The colors you can use to get close to the viz are "darkgreen" and "gray"
+# 3. Don't worry about adding the Median Household Income title
+
+# This is part of Oregon by the Numbers
+# See https://www.tfff.org/oregon-numbers/
+
+library(tidyverse)
+
+median_income_yamhill <-
+  read_csv(
+    "https://raw.githubusercontent.com/rfortherestofus/rin3-fall-2024/main/data-raw/oregon-median-income-by-county.csv"
+  ) |>
+  filter(geography %in% c("Yamhill", "Oregon"))
+
+median_income_yamhill
+
+ggplot(
+  data = median_income_yamhill,
+  aes(
+    x = amount,
+    y = geography,
+    fill = geography
+  )
+) +
+  
+  # This geom_col() adds the bars
+  geom_col(show.legend = FALSE) +
+  
+  # This geom_text() adds the amount labels
+  geom_text(
+    aes(
+      label = amount_formatted
+    ),
+    color = "white",
+    hjust = 1.2
+  ) +
+  
+  # This geom_text() adds Oregon and Yamhill
+  geom_text(
+    aes(
+      x = 10000,
+      label = geography
+    ),
+    color = "white"
+  ) +
+  
+  # This sets the colors of the bars
+  scale_fill_manual(
+    values = c("gray", "darkgreen")
+  ) +
+  
+  # This adjusts the theme to remove everything
+  theme_void()

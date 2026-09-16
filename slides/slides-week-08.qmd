@@ -1,0 +1,77 @@
+---
+title: R in 3 Months Week 8 (Advanced Data Wrangling)
+format:
+  rfortherestofus-slides-revealjs:
+    menu: false
+    progress: true
+    slide-number: true
+    show-slide-number: print
+    center: true
+    incremental: true
+    auto-animate: true
+execute: 
+  message: false
+  warning: false
+  cache: false
+  # eval: false
+  echo: true
+title-slide-attributes:
+  data-background-image: assets/rru-hex-bg-gradient-dark.svg
+  data-background-size: cover
+editor_options: 
+  chunk_output_type: console
+---
+
+# Agenda
+
+1. Housekeeping
+
+1. Your Questions on Advanced Data Wrangling
+
+1. Joins
+
+1. Iteration
+
+1. Next Week
+
+::: {.notes}
+https://rin3spring2026.rfortherestofus.com/slides/slides-week-08.html
+:::
+
+# Housekeeping {.inverse}
+
+## Housekeeping
+
+- Week 9: Advanced data viz
+
+- Week 10: Catch-up week
+
+- Week 11: Advanced data viz
+
+- Week 12: Advanced Quarto
+
+- Week 13: Wrap-up
+
+## Feedback
+
+You can get feedback through the end of June
+
+# Your Questions {.inverse}
+
+## as.numeric() + parse_number()
+
+> Does using as.numeric() or parse_number() in R automatically change non-numeric characters into NA?
+
+## Why save as RDS vs CSV? {.inverse}
+
+## Joins
+
+- Mismatched variable types
+
+- Many-to-many joins
+
+## Iteration {.inverse}
+
+# Next Week
+
+- Advanced data viz, part 1: declutter and highlight your plots

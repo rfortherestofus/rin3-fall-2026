@@ -1,0 +1,109 @@
+---
+title: "Fonts"
+format:
+  html:
+    mainfont: "Georgia"
+execute: 
+  echo: false
+  warning: false
+  message: false
+  fig-height: 6
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(tidyverse)
+library(here)
+
+penguins <- read_csv(here("data-raw/penguins.csv"))
+```
+
+
+## Set fonts in theme
+
+```{r}
+penguins_bill_length_by_island <-
+  penguins |>
+  group_by(island) |>
+  summarize(mean_bill_length = mean(bill_length_mm, na.rm = TRUE))
+
+ggplot(
+  data = penguins_bill_length_by_island,
+  aes(
+    x = island,
+    y = mean_bill_length,
+    label = island
+  )
+) +
+  geom_col() +
+  geom_text(vjust = -1) +
+  theme_minimal(base_family = "Georgia")
+```
+
+
+## Set fonts in geoms
+
+```{r}
+ggplot(
+  data = penguins_bill_length_by_island,
+  aes(
+    x = island,
+    y = mean_bill_length,
+    label = island
+  )
+) +
+  geom_col() +
+  geom_text(
+    vjust = -1,
+    family = "Georgia"
+  ) +
+  theme_minimal(base_family = "Georgia")
+```
+
+## update_geom_defaults()
+
+Proident aliquip sint aliqua enim culpa elit irure non amet cillum ipsum est cillum magna. Qui reprehenderit minim dolor reprehenderit officia sint consectetur irure. Occaecat ad sunt nisi deserunt ut nulla proident laborum commodo laborum sint excepteur veniam nisi ullamco. In officia eu cupidatat officia. Reprehenderit eiusmod consectetur nulla occaecat consequat mollit labore mollit. Aliqua labore elit ipsum laboris consequat.
+
+```{r}
+update_geom_defaults(
+  geom = "text",
+  aes(
+    family = "Georgia",
+    color = "red"
+  )
+)
+```
+
+```{r}
+ggplot(
+  data = penguins_bill_length_by_island,
+  aes(
+    x = island,
+    y = mean_bill_length,
+    label = island
+  )
+) +
+  geom_col() +
+  geom_text(vjust = -1) +
+  theme_minimal(base_family = "Georgia")
+```
+
+```{r}
+penguins |>
+  count(year) |>
+  mutate(year = as.character(year)) |>
+  ggplot(
+    aes(
+      x = n,
+      y = year,
+      label = n
+    )
+  ) +
+  geom_col() +
+  geom_text(
+    hjust = 2,
+    color = "white"
+  ) +
+  theme_minimal(base_family = "Georgia")
+```

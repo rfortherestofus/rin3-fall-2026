@@ -1,0 +1,217 @@
+---
+title: R in 3 Months Week 12 (Advanced Quarto)
+format:
+  rfortherestofus-slides-revealjs:
+    menu: false
+progress: true
+slide-number: true
+show-slide-number: print
+center: true
+incremental: true
+auto-animate: true
+execute: 
+  message: false
+  warning: false
+  cache: false
+  # eval: false
+  echo: true
+title-slide-attributes:
+  data-background-image: assets/rru-hex-bg-gradient-dark.svg
+data-background-size: cover
+editor_options: 
+  chunk_output_type: console
+countdown:
+  color_background: "lightblue"
+  border_width: "0"
+filters:
+   - roughnotation
+---
+  
+```{r}
+#| echo: false
+library(tidyverse)
+library(janitor)
+```
+
+
+# Agenda
+
+1. Housekeeping
+
+1. Parameterized Reporting
+
+1. Next Week
+
+::: {.notes}
+https://rin3spring2026.rfortherestofus.com/slides/slides-week-12.html
+:::
+  
+# Housekeeping
+
+1. You can now slow down the pace of the videos
+
+1. Next week is the last live session, but you can get feedback through end of June
+
+1. Coworking session will happen on **Monday, June 1st, at 10am PT** (not Tuesday)
+
+1. You'll have access to course materials forever!
+
+## Self-reflection
+{{< countdown "1:00" top=0 right=0 >}}
+
+**Please share in the chat:**  
+
+1. What was one thing you found difficult this week? 
+2. What was one thing you learned this week?
+
+# Parameterized Reporting {.inverse}
+
+::: {.notes}
+Make multiple reports at once
+:::
+
+## Why Parameterized Reporting?
+
+1. Allows you to make multiple reports at once
+1. Avoids copy paste issues if you were to make multiple reports by hand
+1. It feels like magic!
+
+::: {.notes}
+Start by talking about reports at OCF
+:::
+
+## Parameterized Reports We Have Made {.inverse}
+
+---
+
+![](assets/ivac-country-report-angola.png){height=700, fig-align="center"}
+
+---
+
+![](assets/ivac-country-reports.png){height=700, fig-align="center"}
+
+::: {.notes}
+https://www.jhsph.edu/ivac/resources/pdpr/
+:::
+
+---
+
+[![](assets/colorado-report-two-pages.png)](https://publichealth.jhu.edu/ivac/monitoring-childhood-immunization-at-the-state-level)
+
+::: {.notes}
+https://publichealth.jhu.edu/ivac/monitoring-childhood-immunization-at-the-state-level
+:::
+
+
+---
+
+![](assets/psc.png)
+
+::: {.notes}
+Show webpage on screen while presenting
+https://housingprofiles.pschousing.org/
+:::
+
+## How Does Parameterized Reporting Work? {.inverse}
+
+---
+
+![](assets/parameterized-reporting-1.png)
+
+---
+
+![](assets/parameterized-reporting-2.png)
+
+---
+
+![](assets/parameterized-reporting-3.png)
+
+---
+
+![](assets/parameterized-reporting-4.png)
+
+---
+
+![](assets/parameterized-reporting-5.png)
+
+---
+
+![](assets/parameterized-reporting-6.png)
+
+---
+
+![](assets/parameterized-reporting-7.png)
+
+
+## Demonstration of Parameterized Reporting {.inverse}
+
+::: {.notes}
+Manually Create Multiple Reports
+
+- Create new project
+- Create Quarto document with manual filtering and manual text
+
+Add Parameters to YAML
+
+- Add parameters
+- Filter dataset
+- Inline R code
+
+Render with R Script
+
+- With just `input` argument
+- Adding `output_file` and `execute_params` arguments
+
+Render Multiple Reports with `quarto_render()`
+
+- Show `quarto_render()` with one-row tibble
+- Create `reports` tibble for all countries
+- Render multiple reports with `pwalk()`
+
+```
+library(tidyverse)
+library(quarto)
+
+median_income_by_county <-
+  read_csv("data-raw/median_income_by_county.csv")
+
+states <-
+  median_income_by_county |>
+  distinct(state) |>
+  pull(state)
+
+reports <-
+  tibble(
+    input = "report.qmd",
+    output_file = str_glue("{states}.html"),
+    execute_params = map(states, ~ list(state = .))
+  )
+
+pwalk(reports, quarto_render)
+```
+:::
+
+## Check-in break {incremental=false}
+
+{{< countdown "1:00" top=0 right=0 >}}
+
+What is still confusing to you about parameterized reporting?
+
+
+# Next Week
+
+- Surveys on your [progress](https://rfortherestofus.com/courses/r-in-3-months-spring-2026/lessons/r-in-3-months-progress-survey) and on [feedback](https://rfortherestofus.com/courses/r-in-3-months-spring-2026/lessons/r-in-3-months-feedback-survey) for R in 3 Months
+  
+- Please complete final projects **even if you haven't completed every single lesson**
+
+- Add info about your final project on [this Google Slides presentation](https://docs.google.com/presentation/d/1kDRwjcJP-qjrmSNgkEIGmhg9imfhGWks81-9JANpQog/edit?usp=sharing)
+
+::: {.notes}
+Examples from past cohort: https://docs.google.com/presentation/d/1crH3G9yiksU_INYET-UGhIofWMwQQtkJJAjvEwLzyxE/edit?usp=sharing
+:::
+
+# Next Week
+
+- Next week we'll talk about your progress (including showing some final projects) and discuss where you go after R in 3 Months to continue learning R
+
+

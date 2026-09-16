@@ -1,0 +1,33 @@
+---
+title: "sizes"
+format: 
+  html:
+    
+---
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+```{r}
+#| fig-height: 10
+#| fig-width: 3
+penguins |>
+  group_by(island) |>
+  summarize(mean_bill_length = mean(bill_length_mm, na.rm = TRUE)) |>
+  ggplot(
+    aes(
+      x = island,
+      y = mean_bill_length,
+      label = island,
+      fill = island
+    )
+  ) +
+  geom_col() +
+  geom_text(
+    size.unit = "pt",
+    size = 12
+  ) +
+  labs(title = "Biscoe penguins have the longest bills on average")
+```

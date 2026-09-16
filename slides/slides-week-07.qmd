@@ -1,0 +1,83 @@
+---
+title: R in 3 Months Week 7 (Functions)
+format:
+  rfortherestofus-slides-revealjs:
+    menu: false
+    progress: true
+    slide-number: true
+    show-slide-number: print
+    center: true
+    incremental: true
+    auto-animate: true
+execute: 
+  message: false
+  warning: false
+  cache: false
+  # eval: false
+  echo: true
+title-slide-attributes:
+  data-background-image: assets/rru-hex-bg-gradient-dark.svg
+  data-background-size: cover
+editor_options: 
+  chunk_output_type: console
+---
+
+# Agenda
+
+1. Housekeeping
+P
+1. Tidy Data Example
+
+1. Functions
+
+1. Next Week
+
+::: {.notes}
+https://rin3spring2026.rfortherestofus.com/slides/slides-week-07.html
+:::
+
+# Housekeeping {.inverse}
+
+## Remaining Weeks
+
+-   Week 8: Advanced Data Wrangling, Part 3 (Data Merging and Exporting Data)
+
+-   Week 9: Advanced Data Viz, Part 1 (Highlighting and Decluttering)
+
+-   Week 10: Catch-Up Week
+
+-   Week 11: Advanced Data Viz, Part 2 (Explaining and Making Your Viz Sparkle)
+
+-   Week 12: Advanced Quarto
+
+-   Week 13: Wrap Up
+
+# Questions on Tidy Data? {.inverse}
+
+## Tidy Data Example {.inverse}
+
+::: {.notes}
+- places_by_type_and_rurality
+- population summaries
+:::
+
+# Functions {.inverse}
+
+## Question on Function Arguments
+
+. . .
+
+I'm seeing a difference in the syntax used in the main video vs the solution video and am wondering if you can please explain the difference. In the main video, you use `separate_longer_delim(cols = activities,...` but the solution video uses `separate_longer_delim(partyid,...` without the use of `cols =`.
+
+::: {.notes}
+https://rfortherestofus.com/courses/r-in-3-months-spring-2026/lessons/using-function-arguments
+:::
+
+
+## Advanced Functions {.inverse}
+
+# Next Week
+
+- Course lessons cover data merging and data exporting
+
+- Project assignment is to tidy your data with the various functions you have learned

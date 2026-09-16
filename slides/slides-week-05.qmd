@@ -1,0 +1,185 @@
+---
+title: R in 3 Months Week 5 (AI)
+format:
+  rfortherestofus-slides-revealjs:
+    menu: false
+    progress: true
+    slide-number: true
+    show-slide-number: print
+    center: true
+    incremental: true
+    auto-animate: true
+execute:
+  message: false
+  warning: false
+  cache: false
+  # eval: false
+  echo: true
+title-slide-attributes:
+  data-background-image: assets/rru-hex-bg-gradient-dark.svg
+  data-background-size: cover
+editor_options:
+  chunk_output_type: console
+---
+
+# Agenda
+
+1. Overview
+
+2. Data Security
+
+3. Approaches
+
+4. Writing Code
+
+5. Analyzing Data
+
+6. Next Week
+
+::: notes
+https://rin3spring2026.rfortherestofus.com/slides/slides-week-05.html
+:::
+
+# Overview {.inverse}
+
+## AI for Coding in R
+
+- AI has gotten amazing, but you still need to verify results
+
+- Why learn to code? Because foundational skills let you do more
+
+- Many approaches, but [Claude Code](https://www.anthropic.com/product/claude-code) is the best right now
+
+  - $20/month is a good deal (and less expensive than paying via API)
+
+::: notes
+https://posit.co/blog/2026-03-27-ai-newsletter/
+:::
+
+# Data Security {.inverse}
+
+## Data Security
+
+> Access to data is central to our tools' ability to do their jobs. It is difficult to successfully anonymize information that's passed to an LLM, especially if that LLM has access to execute arbitrary code. - [Simon Couch and Sara Altman](https://posit.co/blog/trust-llm-tools/)
+
+## Data Security
+
+> Using an AI data science agent while obscuring your data is similar to hiring a financial advisor but hiding the contents of your bank accounts. If you don't trust a financial advisor to look at your accounts, they will be of little use to you and you probably shouldn't hire them. - [Simon Couch and Sara Altman](https://posit.co/blog/trust-llm-tools/)
+
+## My Take on Data Security
+
+- If you have super sensitive data, don't use AI tools
+
+- Set your account so chats are not used to train models
+
+- Know that your data will leave your computer (unless using a locally-run LLM)
+
+- Review the privacy policies of LLM providers to find one you're comfortable with
+
+::: {.notes}
+https://posit.co/blog/trust-llm-tools/
+:::
+
+# Approaches {.inverse}
+
+## Approaches
+
+- Web UI
+
+- Desktop app (e.g. Claude)
+
+- In Positron or RStudio (via Positron Assistant / Posit Assistant)
+
+- IDE extension
+
+- Terminal (Claude Code)
+
+## Why Not Just Use the Web UI?
+
+> Bouncing between a chatbot and RStudio feels like the old days of copying and pasting plots into a Word document. And because the chatbot doesn't know what's in your R session, it often gives the wrong answer.
+
+::: small
+— Hadley Wickham
+:::
+
+::: notes
+https://posit.co/blog/introducing-ai-in-rstudio/
+:::
+
+## Why Not Just Use the Web UI?
+
+> Posit AI closes the loop by embedding the chatbot in RStudio, letting it see what data and packages you have loaded and run code on your behalf.
+
+::: small
+— Hadley Wickham
+:::
+
+::: notes
+https://posit.co/blog/introducing-ai-in-rstudio/
+:::
+
+# Writing Code {.inverse}
+
+## Writing Code
+
+1. Code completion
+
+2. Fix and Explain
+
+3. Agentic AI
+
+# Code Completion {.inverse}
+
+::: notes
+Rebecca Barter talk from posit::conf: https://www.youtube.com/watch?v=1hfu1AvQkLw
+:::
+
+# Fix and Explain {.inverse}
+
+## Fix and Explain
+
+- Positron Assistant
+
+- Claude Code
+
+# Agentic AI {.inverse}
+
+## Agentic AI
+
+- Positron Assistant
+
+  - Using GitHub Copilot
+
+  - Using Claude
+
+- Claude Code
+
+- Posit Assistant
+
+## Claude Code Modes
+
+1. Plan
+
+2. Ask before edit
+
+3. Edit automatically
+
+4. Bypass permissions
+
+# Analyzing Data {.inverse}
+
+## Analyzing Data
+
+- Write code to analyze data
+
+- Databot
+
+::: notes
+https://posit.co/blog/databot-is-not-a-flotation-device/
+:::
+
+# Next Week 
+
+- Course assignment: advanced data wrangling, part 1 (tidy data)
+
+- No project assignment in week 6

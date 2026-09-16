@@ -1,0 +1,256 @@
+---
+title: R in 3 Months Week 6 (Tidy Data)
+format:
+  rfortherestofus-slides-revealjs:
+    menu: false
+    progress: true
+    slide-number: true
+    show-slide-number: print
+    center: true
+    incremental: true
+    auto-animate: true
+    output-location: fragment
+execute: 
+  message: false
+  warning: false
+  cache: false
+  # eval: false
+  echo: true
+title-slide-attributes:
+  data-background-image: assets/rru-hex-bg-gradient-dark.svg
+  data-background-size: cover
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| echo: false
+library(tidyverse)
+library(palmerpenguins)
+library(googlesheets4)
+library(janitor)
+library(scales)
+```
+
+# Agenda
+
+1.  Housekeeping
+
+1.  Tidy Data
+
+1.  Next Week
+
+::: notes
+https://rin3spring2026.rfortherestofus.com/slides/slides-week-06.html
+:::
+
+# Housekeeping {.inverse}
+
+## AI Session {.inverse}
+
+::: {.notes}
+Just use Claude Code
+:::
+
+## Cheatsheets {.inverse}
+
+::: {.notes}
+https://cheatsheets.rfortherestofus.com/cheatsheets-rin3.pdf
+
+https://cheatsheets.rfortherestofus.com/cheatsheets-rin3.html
+:::
+
+
+## What Does the Rest of R in 3 Months Look Like?
+
+-   Week 7: Advanced Data Wrangling, Part 2 (More Functions for Wrangling Data and Functions)
+
+-   Week 8: Advanced Data Wrangling, Part 3 (Data Merging and Exporting Data)
+
+-   Week 9: Advanced Data Viz, Part 1 (Highlighting and Decluttering)
+
+-   Week 10: Catch-Up Week
+
+## What Does the Rest of R in 3 Months Look Like?
+
+-   Week 11: Advanced Data Viz, Part 2 (Explaining and Making Your Viz Sparkle)
+
+-   Week 12: Advanced Quarto
+
+-   Week 13: Wrap Up
+
+## Access to Materials
+
+- You have access to course materials and published coach feedback FOREVER
+
+# Tidy Data {.inverse}
+
+# What Questions Do You Have About Tidy Data? {.inverse}
+
+::: notes
+https://rfortherestofus.com/2022/01/tidy-data-chat
+
+https://r4ds.hadley.nz/data-tidy
+
+Think about unit of analysis
+
+Try to plot your data and if you can't, it's probably not tidy
+
+Make sure you have latest version of dplyr for recode_values etc functions
+:::
+
+## Tidy Data Rule #1: Every Column is a Variable {.inverse}
+
+---
+
+```{r}
+#| echo: false
+life_expectancy_over_time <-
+  gapminder::gapminder |>
+  mutate(country = as.character(country)) |>
+  select(country, year, lifeExp) |>
+  pivot_wider(
+    id_cols = country,
+    names_from = year,
+    values_from = lifeExp
+  ) |>
+  slice(1:10)
+```
+
+```{r}
+life_expectancy_over_time
+```
+
+---
+
+```{r}
+life_expectancy_over_time |>
+  pivot_longer(
+    cols = -country,
+    names_to = "year",
+    values_to = "life_expectancy"
+  )
+```
+
+## Tidy Data Rule #3: Every Cell is a Single Value {.inverse}
+
+---
+
+```{r}
+#| echo: false
+my_addresses <-
+  tribble(
+    ~time_period                                 ,
+    ~address                                     ,
+    "Childhood"                                  ,
+    "537 Westdale Avenue, Swarthmore, PA, 19801" ,
+    "Childhood"                                  ,
+    "690 Omar Circle, Yellow Springs, OH, 45387" ,
+    "Grad School"                                ,
+    "3809 Meade Avenue, San Diego, CA, 92116"
+  )
+```
+
+```{r}
+my_addresses
+```
+
+---
+
+```{r}
+my_addresses |>
+  separate_wider_delim(
+    cols = address,
+    delim = ", ",
+    names = c("street", "city", "state", "zip_code")
+  )
+```
+
+## Tidy Data Rule #2: Every Row is an Observation {.inverse}
+
+::: {.notes}
+Select all that apply question
+
+Think about unit of analysis
+:::
+
+---
+
+```{r}
+#| echo: false
+favorite_sports <-
+  tribble(
+    ~name                          ,
+    ~favorite_sport                ,
+    "David"                        ,
+    "Soccer, Basketball"           ,
+    "Elias"                        ,
+    "Baseball, Soccer, Skiing"     ,
+    "Leila"                        ,
+    "Aerial Dance, Roller Skating" ,
+    "Rachel"                       ,
+    "Soccer, Baseball"
+  )
+```
+
+```{r}
+favorite_sports
+```
+
+---
+
+```{r}
+favorite_sports |>
+  separate_longer_delim(
+    cols = favorite_sport,
+    delim = ", "
+  )
+```
+
+
+
+## Tidy Data Question
+
+> When working with "select all that apply" variables in the past in datasets where one row = one individual, I've typically dealt with this by converting each response option to its own column where a 1 ("yes") is present if that response option was selected. This has worked well for my purposes, but I understand now that it violates Tidy Data Rule 1 because a single variable is spread across multiple columns. Am I understanding correctly that while the approach I've used in the past is not inherently better or worse than tidy format, the advantage to making it tidy is that it will be easier to analyze using tidyverse? Is this still true if the unit of analysis I'm interested in is the individual and not the activity (for example)?
+
+::: notes
+https://rfortherestofus.com/2022/05/select-all
+:::
+
+
+# Tidy Data Live Coding {.inverse}
+
+::: {.notes}
+Rule 1: start/end stuff
+
+Rule 3: Pre/Post weight + Address
+
+Rule 2: Create demographics and favorite_parts df
+
+Show breaking things into pieces
+
+Show converting character data into numeric
+
+Recategorize race + ethnicity
+:::
+
+
+# Misc Questions {.inverse .hidden}
+
+::: {.notes}
+How to format large numbers (scale::number or scale::comma)
+
+How to format numbers as currency
+
+How to remove categories
+
+How to combine categories
+
+How to remove x axis text
+:::
+
+# Next Week
+
+1.  Lessons on additional data wrangling functions and learn to make your own functions
+
+2.  No project assignment (but there will be one in week 8)

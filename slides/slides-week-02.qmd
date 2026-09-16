@@ -1,0 +1,375 @@
+---
+title: R in 3 Months Week 2 (Data Wrangling and Analysis)
+format:
+  rfortherestofus-slides-revealjs:
+    menu: false
+    progress: true
+    slide-number: true
+    show-slide-number: print
+    center: true
+    incremental: true
+    auto-animate: true
+execute: 
+  message: false
+  warning: false
+  cache: false
+  eval: false
+  echo: true
+title-slide-attributes:
+  data-background-image: assets/rru-hex-bg-gradient-dark.svg
+  data-background-size: cover
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| echo: false
+library(palmerpenguins)
+library(tidyverse)
+library(janitor)
+library(tidycensus)
+```
+
+```{r}
+#| echo: false
+penguins <- read_csv(file = "data-raw/penguins.csv")
+```
+
+## What is the most surprising thing about R so far?
+
+Please put your answer in the chat!
+
+# Agenda
+
+1. Housekeeping
+
+1. Review of {dplyr} Functions
+
+1. Common Issues and Your Questions
+
+1. Next Week
+
+::: {.notes}
+https://rin3spring2026.rfortherestofus.com/slides/slides-week-02.html
+:::
+
+# Housekeeping {.inverse}
+
+## Project Assignments
+
+- If you submitted a project assignment, you should receive an email notification when Gracielle gives you feedback
+
+- Gracielle can answer questions relevant to the topic of the week, but can't answer everything for you
+
+- Instead, she will share resources with you where applicable
+
+## Datasets
+
+- Check in with Gracielle about a good dataset to use!
+
+- [rin3-datasets repo](https://github.com/rfortherestofus/rin3-datasets)
+
+## Co-Working Session {.inverse}
+
+## Cheatsheets
+
+- [Posit Cheatsheets](https://github.com/rfortherestofus/rin3-spring-2026/blob/main/misc/beginner-cheatsheets.pdf)
+
+- [R for the Rest of Us Cheatsheets](https://cheatsheets.rfortherestofus.com/cheatsheets-rin3.html)
+
+# Review of Functions {.inverse}
+
+# `select()` {.inverse}
+
+# {background-video="assets/09_select.mp4" background-video-loop="true" background-size="contain"}
+
+# `mutate()` {.inverse}
+
+# {background-video="assets/04_mutate.mp4" background-video-loop="true" background-size="contain"}
+
+# `filter()` {.inverse}
+
+# {background-video="assets/01_filter_1.mp4" background-video-loop="true" background-size="contain"}
+
+# `summarize()` {.inverse}
+
+# {background-video="assets/05_summarise.mp4" background-video-loop="true" background-size="contain"}
+
+# `group_by() |> summarize()` {.inverse}
+
+# {background-video="assets/06_summarise_grouped.mp4" background-video-loop="true" background-size="contain"}
+
+# `arrange()` {.inverse}
+
+# {background-video="assets/03_arrange.mp4" background-video-loop="true" background-size="contain"}
+
+# Common Issues and Your Questions {.inverse}
+
+## The `.by` argument in summarize()
+
+> An observation that I am curious about: The group_by with two variables appears to sort the tibble by the first variable alphabetically (island), while the alternative method David showed (i.e., the .by) sorts it by the year in the tibble. Is this always the case or was this simply by chance that this change in sorting of the summary tibble occured?
+
+::: {.notes}
+- .by argument keeps original order
+- group_by() changes order to alphabetical
+:::
+
+## `summarize()`
+
+> What is the benefit of using arithmetic functions like `sum()`, `mean()`, `average()`, or `count()` inside `summarize()` instead of using these functions on their own? Is it because `summarize()` allows you to compute multiple summary statistics at once and organize them more efficiently?
+
+## How to Import Excel Files 
+
+. . .
+
+![](assets/readxl.png)
+
+## Packages
+
+. . .
+
+**Install** packages once per **computer**
+
+. . .
+
+```{r}
+#| eval: false
+install.packages("tidyverse")
+```
+
+. . .
+
+<br>
+**Load** packages once per **session**
+
+. . .
+
+```{r}
+#| eval: false
+library(tidyverse)
+```
+
+## Packages
+
+Can you set up R to always load certain packages?
+
+## Projects vs Scripts
+
+> What is the point of creating both a R script file and a R project file? I understand that R project is a higher level structure and maybe it can pull from outputs of different R script files... please de-mystify.
+
+::: {.notes}
+- Give tour of what it was like before RStudio/Positron
+- Talk about relative vs absolute file paths
+- Talk about reproducibility for others if you use absolute file paths
+:::
+
+## Projects
+
+> I started this video after I closed and reopened Positron, so there is no folder open. There is a message on the left reminding me that no folder is open and asking me to open a folder. Is opening a folder always the first step?
+
+## Working directories
+
+- Positron (and RStudio) projects set your working directory to be the root of the project
+
+- Using a project, you only need to use **relative** file paths, not **absolute** file paths
+
+- This is easier to type and more reproducible
+
+## What is the ideal maximum pipeline length?
+
+> Are there any widely accepted "best practices" around pipeline length? In the penguins example for arrange(), there were ~ 5 functions tied together in the pipeline. I can see the efficiency of this in that you only have to call penguins |> one time to implement all of those functions -- however, I personally tend to feel more comfortable implementing code in smaller chunks so I can label exactly what each piece is doing, especially if my code will be shared with others. 
+
+## What is the ideal maximum pipeline length?
+
+> Your pipes are longer than (say) ten steps. In that case, create intermediate objects with meaningful names. That will make debugging easier, because you can more easily check the intermediate results, and it makes it easier to understand your code, because the variable names can help communicate intent.
+
+::: {.small}
+Source: [R for Data Science, 1st Edition](https://arc.net/l/quote/llsbqlfp)
+:::
+
+::: {.notes}
+One caveat is that when get your data into tidy format, you will need to do less piping afterwards
+:::
+
+## Parentheses matter (a lot!)
+
+What's the logic for the "-" (minus) in the second solution below being in its own parenthesis but it's not in the first solution? That tripped me up.
+
+```{r}
+penguins |>
+  select(-species)
+```
+
+. . .
+
+```{r}
+penguins |>
+  select(-(bill_length_mm:body_mass_g))
+```
+
+
+## Parentheses matter (a lot!)
+
+> When I run the `read_csv()` code again to deal with the -999 values, it does not completely work. 
+
+. . .
+
+> Looking at the data using `view(penguins_data)`, I still have some -999 values in case 4, as well as some -999.0 values in case 4. 
+
+## Parentheses matter (a lot!)
+
+> I have adapted the code to read `read_csv("penguins_data.csv", na = "-999, -999.0")` to deal with the ones with the decimal point and the zero, but even after that there are still these issues, including in sex_v2
+
+. . .
+
+> I can see that in sex there are some `NA` values now, which means the code has partially worked, I guess. 
+
+## `select()` issues
+
+```{r}
+penguins |>
+  select(-island:year)
+```
+
+```{r}
+penguins |>
+  select(-1, island:year)
+```
+
+. . .
+
+Does not remove the "species" variable but this does:
+
+```{r}
+penguins |>
+  select(island:year)
+```
+
+## How R handles NA values
+
+- SPSS has named NA values
+
+- In R, a value is only NA if it shows up in red (in the console) or light gray (in the data viewer)
+
+## How R handles NA values
+
+You'll learn later to use functions from the {tidyr} package to deal with missing values:
+
+- `replace_na()` will replace existing `NA` values with your chosen values
+
+- `na_if()` will replace values you specify with `NA`
+
+## NA values
+
+> Is there some way to change the default behavior of summarize so that it ignores NAs without having to specify it specifically? I didn't know if there was something like a global variable that you can set in the R script file, or something within the RStudio environment or installed package?
+
+::: {.notes}
+Don't want to make your code not reproducible
+
+Gracielle: Yes! It’s common that people just drop the NAs and sometimes they are actually important 0s. I see that all the time on species occurrence data, where NAs are often used interchangeably for “we didn’t sample there” and “we sampled there but no species were found”.
+
+Libby: Are we missing a lot of values for "income" in our survey? Why? Which demographics are most likely to having missing income values? If we drop all these rows, are we now excluding a whole population group simply because they're less likely to disclose income on a survey?
+:::
+
+## Quotes
+
+## Needed to refer to non-existent things
+
+```{r}
+#| eval: false
+#| echo: true
+install.packages("tidyverse")
+```
+
+## Not needed to refer to existing things 
+
+::: {.fragment}
+```{r}
+#| eval: false
+#| echo: true
+library(tidyverse)
+```
+:::
+
+<br>
+
+::: {.fragment}
+```{r}
+#| eval: false
+#| echo: true
+penguins |>
+  select(island)
+```
+:::
+
+## Needed when you're referring to text
+
+```{r}
+#| eval: false
+#| echo: true
+penguins |>
+  filter(island == "Torgersen")
+```
+
+## Or the name of a file
+
+```{r}
+#| eval: false
+#| echo: true
+penguins <- read_csv(file = "data-raw/penguins.csv")
+```
+
+## Rounding
+
+> I went a step further by wanting to round my average and drop the decimals (I noticed some decimal places in my answer). I used mutate and round to change it, but is there any easier or simpler way to format it?
+
+. . .
+
+```{r}
+penguins |>
+  filter(island == "Biscoe") |>
+  drop_na(body_mass_g, sex) |>
+  group_by(sex) |>
+  summarize(mean_body_mass = mean(body_mass_g)) |>
+  mutate(mean_body_mass = round(mean_body_mass, digits = 0))
+```
+
+# Air code formatter
+
+![](https://posit-dev.github.io/air/images/air.png){fig-align="center"}
+
+
+# Typos happen to everone
+
+![](assets/david-asking-for-help.png)
+
+# Typos happen to everone
+
+::: {.large}
+```{r}
+#| eval: false
+#| echo: true
+
+get_acs(
+  year = 2019,
+  geography = "county",
+  geometry = TRUE,
+  state = "OR",
+  variables = "B01003_001"
+) |>
+  clean_names() |>
+  mutate(name = str_remove(name, " County")) |>
+  rename(
+    poulation = estimate,
+    county = name
+  ) |>
+  select(county, population)
+```
+:::
+
+
+# Next Week
+
+1. Course assignment: complete data viz lessons
+
+1. Project assignment: make three plots from your data

@@ -1,0 +1,73 @@
+---
+title: R in 3 Months Week 10 (AI)
+format:
+  rfortherestofus-slides-revealjs:
+    menu: false
+    progress: true
+    slide-number: true
+    show-slide-number: print
+    center: true
+    incremental: true
+    auto-animate: true
+execute: 
+  message: false
+  warning: false
+  cache: false
+  # eval: false
+  echo: true
+title-slide-attributes:
+  data-background-image: assets/rru-hex-bg-gradient-dark.svg
+  data-background-size: cover
+editor_options: 
+  chunk_output_type: console
+---
+
+# Agenda
+
+AI!
+
+# Modes {.inverse}
+
+::: {.notes}
+- How to enable dangerously bypass permissions
+- Auto mode (only for teams)
+- Dangerously bypass permissions
+:::
+
+# Tidy Data {.inverse}
+
+# Posit Assistant {.inverse}
+
+::: {.notes}
+- ⁣⁠⁠​‍​​​‍‌‍​‍‌⁣‍‌‍⁠‌‍⁠‍­‌‍‍‌‌⁣‍­‍​⁠⁣Positron assistant is going away
+:::
+
+# Making Data Viz {.inverse}
+
+::: {.notes}
+Make something in NYT style⁣⁠‍⁣‍⁠‍⁠‍⁠‌​‍​⁣⁠‍­‍‌⁠‍‌­‌‍⁠­​⁠⁣⁠‌⁠⁠⁣
+:::
+
+# Creating Functions {.inverse}
+
+::: {.notes}
+round_half_up_percent() etc⁣⁠⁠​­⁠​⁠⁠‌​⁣​⁠⁣‍⁣​​­​⁠⁣‍‍‌‌­‌​­⁠‍⁣⁠⁣
+:::
+
+# Interpreting Code {.inverse}
+
+::: {.notes}
+Do it with CBEM code⁣⁠‍‍‍​​‍‌​‌­‌­⁣­‍‍­⁣⁠‍⁠​‌‍​‍⁠‌­​‍​⁠⁣
+:::
+
+# Review and Refactor Code {.inverse}
+
+::: {.notes}
+⁣⁠­​‌⁠⁠⁠⁠‍­‌‌‍⁣​​​⁠‍­‍⁣Write co‌de⁣ that repeats‌‍ itself and could be a function⁠​‍​‌‍⁠⁠⁣
+:::
+
+
+# Next Week
+
+- Week 11 is more advanced data viz, including making your own custom theme
+

@@ -1,0 +1,96 @@
+---
+title: R in 3 Months Week 9 (Advanced Data Viz, Part 1)
+format:
+  rfortherestofus-slides-revealjs:
+    menu: false
+    progress: true
+    slide-number: true
+    show-slide-number: print
+    center: true
+    incremental: true
+    auto-animate: true
+execute: 
+  message: false
+  warning: false
+  cache: false
+  # eval: false
+  echo: true
+title-slide-attributes:
+  data-background-image: assets/rru-hex-bg-gradient-dark.svg
+  data-background-size: cover
+editor_options: 
+  chunk_output_type: console
+---
+
+# Agenda
+
+1. Housekeeping
+
+1. CBEM data viz live coding
+
+1. Making functions for data viz
+
+1. Next week
+
+::: {.notes}
+https://rin3spring2026.rfortherestofus.com/slides/slides-week-09.html
+:::
+
+# Housekeeping
+
+[Check-in survey](https://forms.gle/Fvz9H4oQUGFozeN66)
+
+# Housekeeping
+
+. . .
+
+Remaining weeks:
+
+- Week 10: Catch-up week (possible AI session)
+
+- Week 11: Advanced data viz, part 2 (making your own ggplot theme)
+
+- Week 12: Advanced Quarto
+
+- Week 13: Final projects
+
+# AI Session Next Week (?) {.inverse}
+
+# Housekeeping
+
+- You can get feedback from your coach through the end of June
+- You have access to materials FOREVER!
+
+# Advanced Data Viz {.inverse}
+
+::: {.notes}
+This week you learned about:
+
+- Reordering
+- Using color to highlight findings
+- Adding descriptive labels
+- Using annotations
+:::
+
+# CBEM Bar Chart Live Coding
+
+[![](assets/cbem-example.jpeg)](https://cbem.judishouse.org/cbem-reports)
+
+::: {.notes}
+- chicklet
+- colors
+- order of bars
+- limits (hispanic on end at 5.5)
+- text labels
+- state rate line and text
+- patchwork to stitch together plots
+- make function
+:::
+
+
+# Next Week
+
+- Catch-up week
+
+- Week 11 is more advanced data viz, including making your own custom theme
+

@@ -1,0 +1,145 @@
+---
+title: R in 3 Months Week 3 (Data Visualization)
+format:
+  rfortherestofus-slides-revealjs:
+    menu: false
+    progress: true
+    slide-number: true
+    show-slide-number: print
+    center: true
+    incremental: true
+    auto-animate: true
+execute: 
+  message: false
+  warning: false
+  cache: false
+  # eval: false
+  echo: true
+title-slide-attributes:
+  data-background-image: assets/rru-hex-bg-gradient-dark.svg
+  data-background-size: cover
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| echo: false
+library(tidyverse)
+library(palmerpenguins)
+```
+
+## What is the most confusing thing about ggplot?
+
+Please put your answer in the chat!
+
+# Agenda
+
+1. Housekeeping
+
+1. ggplot
+
+1. Data viz questions
+
+1. Data viz exercise
+
+1. Next week
+
+
+::: {.notes}
+https://rin3spring2026.rfortherestofus.com/slides/slides-week-03.html
+:::
+
+# Housekeeping {.inverse}
+
+## Housekeeping
+
+- Videos for from second half of course are being added this week
+
+- RStudio
+
+- Live session during catch-up week (April 9) on using AI with R. Email us your questions!
+
+::: {.notes}
+RStudio
+
+- Not going away (similar to RMarkdown vs Quarto)
+- Posit surprised by continued use so made Posit Assistant
+- Nothing wrong with using it
+
+We'll discuss in live session: 
+
+- Various ways to use AI (fix + explain, Positron Assistant, Posit Assistant, Claude Code, etc)
+- AI + data privacy
+:::
+
+# ggplot {.inverse}
+
+---
+
+[![](assets/gas-prices.png)](https://www.nytimes.com/2026/03/18/upshot/gas-prices-lookup.html)
+
+::: {.notes}
+https://www.nytimes.com/2026/03/18/upshot/gas-prices-lookup.html
+:::
+
+# Data Viz Questions {.inverse}
+
+## `==` and lowercase `x` and `y`
+
+. . .
+
+```{r}
+#| eval: false
+penguins |>
+  filter(species == "Gentoo")
+```
+
+. . .
+
+```{r}
+#| eval: false
+ggplot(
+  data = penguins, # why can't I use == within this function?
+  mapping = aes(
+    x = flipper_length_mm, # must be lowercase x and y
+    y = body_mass_g
+  )
+) +
+  geom_point()
+```
+
+
+## Color vs fill
+
+> Why is it that the `color=` option is treated differently by `geom_point` and `geom_col`? The logic seems inconsistent here since `color=` is used as if it is `fill=` by `geom_point`. What if I want the scatter plot to have black dots with outline color different by island?
+
+## Is there a "correct" order to put geoms, scales, themes, etc? {.inverse}
+
+## Width of bars in bar charts {.inverse}
+
+## Reordering bar charts {.inverse}
+
+::: {.notes}
+https://rfortherestofus.com/courses/r-in-3-months-spring-2026/lessons/reorder-plots-to-highlight-findings-positron
+:::
+
+## Wrapping long text in charts {.inverse}
+
+# Data Viz Exercise {.inverse}
+
+## Data Viz Exercise
+
+![](assets/median-income-example.png)
+
+::: notes
+- https://raw.githubusercontent.com/rfortherestofus/rin3-spring-2026/refs/heads/main/misc/median-income-viz.R
+- https://graciellehigino.quarto.pub/rin3-data-viz-exercise-yamhill-income/
+:::
+
+# Next Week
+
+You'll be learning about Quarto!
+
+- Course assignment: learn the basics of Quarto
+
+- Project assignment: take what you've done so far and turn it into a Quarto document
