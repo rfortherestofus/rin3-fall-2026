@@ -60,7 +60,7 @@ world_sf <- countries110 |>
 1. Next Week
 
 ::: {.notes}
-https://rin3spring2026.rfortherestofus.com/slides/slides-week-01.html
+https://rin3fall2026.rfortherestofus.com/slides/slides-week-01.html
 :::
 
 # Survey
@@ -97,7 +97,7 @@ gs4_auth(Sys.getenv("GOOGLE_SHEETS_EMAIL"))
 participants <-
   read_sheet(
     "https://docs.google.com/spreadsheets/d/1Rz7_1_CzxURdhPHRj9YAzV-tgQP6xQmY_qV0VPjhPYs/edit?gid=1336781162",
-    sheet = "Spring 2026 Participants"
+    sheet = "Fall 2026 Participants"
   ) |>
   clean_names()
 
@@ -312,10 +312,9 @@ Share with the people in your breakout room:
 
 ## Course Materials
 
-[![](assets/course-materials.png)](https://rfortherestofus.com/courses/r-in-3-months-spring-2026)
+[![](assets/course-materials.png)](https://rfortherestofus.com/courses/r-in-3-months-fall-2026)
 
 ::: {.notes}
-- First to see Positron materials
 - Try not to get more than 2 weeks behind
 - Transcripts within videos
 - Course questions
@@ -327,7 +326,7 @@ Share with the people in your breakout room:
 
 ## Project Assignments
 
-[![](assets/project-assignment-example.png)](https://rfortherestofus.com/courses/r-in-3-months-spring-2026/lessons/spring-2026-week-2-project-assignment)
+[![](assets/project-assignment-example.png)](https://rfortherestofus.com/courses/r-in-3-months-fall-2026/lessons/fall-2026-week-2-project-assignment)
 
 ## Feedback
 
@@ -409,6 +408,36 @@ Paste email on chat if needed: gracielle@rfortherestofus.com
 - Whether packages are loaded vs installed (packages tab)
 - read.csv vs read_csv
 - Can you set up R to automatically load packages you always use?
+:::
+
+#
+
+::: {.absolute top=0 right=-225}
+{{< countdown "1:00" top=0 right=0 >}}
+:::
+
+Which approach would you use to understand what variables a dataset contains and what type of information each variable holds?
+
+1. Use `library()` to see the variables and their types.
+
+2. Use `str()` to examine the structure of the dataset.
+
+3. Use `install.packages()` to examine the dataset.
+
+4. Use `setwd()` to display the variables and their types.
+
+# 
+
+Which approach would you use to understand what variables a dataset contains and what type of information each variable holds?
+
+::: {.nonincremental}
+1. Use `library()` to see the variables and their types.
+
+2. [Use `str()` to examine the structure of the dataset.]{.mark}
+
+3. Use `install.packages()` to examine the dataset.
+
+4. Use `setwd()` to display the variables and their types.
 :::
 
 # The Elephant in the Room: AI
