@@ -73,7 +73,7 @@ https://rin3spring2026.rfortherestofus.com/slides/slides-week-02.html
 
 ## Cheatsheets
 
-- [Posit Cheatsheets](https://github.com/rfortherestofus/rin3-spring-2026/blob/main/misc/beginner-cheatsheets.pdf)
+- [Posit Cheatsheets](https://github.com/rfortherestofus/rin3-fall-2026/blob/main/misc/beginner-cheatsheets.pdf)
 
 - [R for the Rest of Us Cheatsheets](https://cheatsheets.rfortherestofus.com/cheatsheets-rin3.html)
 
@@ -117,6 +117,29 @@ https://rin3spring2026.rfortherestofus.com/slides/slides-week-02.html
 ## `summarize()`
 
 > What is the benefit of using arithmetic functions like `sum()`, `mean()`, `average()`, or `count()` inside `summarize()` instead of using these functions on their own? Is it because `summarize()` allows you to compute multiple summary statistics at once and organize them more efficiently?
+
+## Assessment break
+
+{{< countdown "1:00" top=0 right=0 >}}
+
+Which function would you use to keep only certain rows in your data?
+
+1. `filter()`
+2. `select()`
+3. `mutate()`
+4. `arrange()`  
+
+## Assessment break
+
+
+Which function would you use to keep only certain rows in your data?
+
+::: {.nonincremental}
+1. [**`filter()`**]{.mark}
+2. `select()`
+3. `mutate()`
+4. `arrange()` 
+:::
 
 ## How to Import Excel Files 
 
@@ -244,6 +267,27 @@ Does not remove the "species" variable but this does:
 penguins |>
   select(island:year)
 ```
+
+## Assessment break
+
+{{< countdown "1:00" top=0 right=0 >}}
+
+A relative path can continue to work when an R project is moved to another computer, provided the project’s internal folder structure stays the same.
+
+1. TRUE
+
+2. FALSE
+
+## Assessment break
+
+A relative path can continue to work when an R project is moved to another computer, provided the project’s internal folder structure stays the same.
+
+::: {.nonincremental}
+1. [**TRUE**]{.mark}
+
+2. FALSE
+:::
+
 
 ## How R handles NA values
 
