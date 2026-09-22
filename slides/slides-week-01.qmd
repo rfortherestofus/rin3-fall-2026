@@ -39,9 +39,8 @@ library(emojifont)
 
 world_sf <- countries110 |>
   st_as_sf() |>
-  filter(sovereignt != "Antarctica") |>
   st_transform(
-    "+proj=robin +lon_0=0 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs"
+    "+proj=eqearth"
   )
 ```
 
@@ -150,7 +149,7 @@ pre_survey_filtered <-
   pre_survey |>
   mutate(year = year(timestamp)) |>
   filter(
-    timestamp > ymd("2026-02-01")
+    timestamp > ymd("2026-08-01")
   ) |>
   mutate(
     how_much_have_you_used_r = factor(
@@ -420,7 +419,7 @@ Which approach would you use to understand what variables a dataset contains and
 
 1. Use `library()` to see the variables and their types.
 
-2. Use `str()` to examine the structure of the dataset.
+2. Use `glimpse()` to examine the structure of the dataset.
 
 3. Use `install.packages()` to examine the dataset.
 
@@ -433,14 +432,14 @@ Which approach would you use to understand what variables a dataset contains and
 ::: {.nonincremental}
 1. Use `library()` to see the variables and their types.
 
-2. [Use `str()` to examine the structure of the dataset.]{.mark}
+2. [Use `glimpse()` to examine the structure of the dataset.]{.mark}
 
 3. Use `install.packages()` to examine the dataset.
 
 4. Use `setwd()` to display the variables and their types.
 :::
 
-# The Elephant in the Room: AI
+# The Elephant in the Room: AI {.inverse}
 
 ::: {.notes}
 https://datavizf25.classes.andrewheiss.com/news/2025-11-02_llms-bad-for-learning-code.html
