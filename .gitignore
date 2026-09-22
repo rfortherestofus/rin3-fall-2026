@@ -47,3 +47,9 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# Private course admin, never publish
+internal/
+
+# Wrangler local cache
+.wrangler/

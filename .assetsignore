@@ -1,0 +1,15 @@
+# Files Wrangler should not publish from the repo root
+
+# Private course admin (scholarship applications, revenue, participants)
+internal/
+
+# Repo and tooling files
+.git
+.claude/
+.gitattributes
+.gitignore
+.assetsignore
+wrangler.jsonc
+node_modules/
+.DS_Store
+.wrangler/

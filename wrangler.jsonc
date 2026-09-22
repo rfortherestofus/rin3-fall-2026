@@ -1,0 +1,12 @@
+// Serves the repo as a static site on Cloudflare Workers, so students can open
+// slides and download files from data/, data-raw/, misc/, and so on.
+// Private files stay out of git (see .gitignore); .assetsignore is a second guard.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "rin3-fall-2026",
+  "compatibility_date": "2026-09-22",
+  "assets": {
+    "directory": "./",
+    "html_handling": "auto-trailing-slash"
+  }
+}
