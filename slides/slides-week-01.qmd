@@ -453,7 +453,7 @@ https://datavizf25.classes.andrewheiss.com/news/2025-12-10_faqs_week-15.html
 
 ## Course Assignment
 
-- You'll learn the fundamentals of data wrangling and analysis with the `dplyr` package
+- You'll learn the fundamentals of data wrangling and analysis with the {dplyr} package
 
 ## Project Assignment
 
