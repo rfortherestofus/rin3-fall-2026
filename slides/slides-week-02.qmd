@@ -57,15 +57,15 @@ https://rin3spring2026.rfortherestofus.com/slides/slides-week-02.html
 
 ## Project Assignments
 
-- If you submitted a project assignment, you should receive an email notification when Gracielle gives you feedback
+- If you submitted a project assignment, you should receive an email notification when I give you feedback
 
-- Gracielle can answer questions relevant to the topic of the week, but can't answer everything for you
+- I can answer questions relevant to the topic of the week, but can't answer everything for you
 
-- Instead, she will share resources with you where applicable
+- Instead, I will share resources with you where applicable
 
 ## Datasets
 
-- Check in with Gracielle about a good dataset to use!
+- Check in with me about a good dataset to use!
 
 - [rin3-datasets repo](https://github.com/rfortherestofus/rin3-datasets)
 
@@ -114,7 +114,7 @@ https://rin3spring2026.rfortherestofus.com/slides/slides-week-02.html
 - group_by() changes order to alphabetical
 :::
 
-## `summarize()`
+## `summarize()` {visibility="hidden"}
 
 > What is the benefit of using arithmetic functions like `sum()`, `mean()`, `average()`, or `count()` inside `summarize()` instead of using these functions on their own? Is it because `summarize()` allows you to compute multiple summary statistics at once and organize them more efficiently?
 
@@ -147,6 +147,12 @@ Which function would you use to keep only certain rows in your data?
 
 ![](assets/readxl.png)
 
+## A note on encoding {.inverse}
+
+:::{.notes}
+https://readr.tidyverse.org/articles/locales.html
+:::
+
 ## Packages
 
 . . .
@@ -172,11 +178,11 @@ install.packages("tidyverse")
 library(tidyverse)
 ```
 
-## Packages
+## Packages {visibility="hidden"}
 
 Can you set up R to always load certain packages?
 
-## Projects vs Scripts
+## Projects vs Scripts {visibility="hidden"}
 
 > What is the point of creating both a R script file and a R project file? I understand that R project is a higher level structure and maybe it can pull from outputs of different R script files... please de-mystify.
 
@@ -190,6 +196,10 @@ Can you set up R to always load certain packages?
 
 > I started this video after I closed and reopened Positron, so there is no folder open. There is a message on the left reminding me that no folder is open and asking me to open a folder. Is opening a folder always the first step?
 
+:::{.notes}
+https://www.andrewheiss.com/blog/2025/07/22/positron-open-with-finder/
+:::
+
 ## Working directories
 
 - Positron (and RStudio) projects set your working directory to be the root of the project
@@ -198,11 +208,11 @@ Can you set up R to always load certain packages?
 
 - This is easier to type and more reproducible
 
-## What is the ideal maximum pipeline length?
+## What is the ideal maximum pipeline length? {visibility="hidden"}
 
 > Are there any widely accepted "best practices" around pipeline length? In the penguins example for arrange(), there were ~ 5 functions tied together in the pipeline. I can see the efficiency of this in that you only have to call penguins |> one time to implement all of those functions -- however, I personally tend to feel more comfortable implementing code in smaller chunks so I can label exactly what each piece is doing, especially if my code will be shared with others. 
 
-## What is the ideal maximum pipeline length?
+## What is the ideal maximum pipeline length? {visibility="hidden"}
 
 > Your pipes are longer than (say) ten steps. In that case, create intermediate objects with meaningful names. That will make debugging easier, because you can more easily check the intermediate results, and it makes it easier to understand your code, because the variable names can help communicate intent.
 
@@ -230,8 +240,26 @@ penguins |>
   select(-(bill_length_mm:body_mass_g))
 ```
 
-
 ## Parentheses matter (a lot!)
+
+```{r}
+penguins |>
+  select(-bill_length_mm:body_mass_g)
+```
+
+The code above is parsed as:
+
+```{r}
+(-bill_length_mm):body_mass_g
+```
+
+:::{.small}
+1. "every column except bill_length_mm", which is positions `c(1, 2, 4, 5, 6, 7, 8)`. That's 7 elements.
+2. `body_mass_g` evaluates to position 6.
+3. The `:` operator only uses the first element of each side, resulting in `select(1:6)`.
+:::
+
+## Parentheses matter (a lot!) {visibility="hidden"}
 
 > When I run the `read_csv()` code again to deal with the -999 values, it does not completely work. 
 
@@ -239,7 +267,7 @@ penguins |>
 
 > Looking at the data using `view(penguins_data)`, I still have some -999 values in case 4, as well as some -999.0 values in case 4. 
 
-## Parentheses matter (a lot!)
+## Parentheses matter (a lot!) {visibility="hidden"}
 
 > I have adapted the code to read `read_csv("penguins_data.csv", na = "-999, -999.0")` to deal with the ones with the decimal point and the zero, but even after that there are still these issues, including in sex_v2
 
@@ -247,7 +275,7 @@ penguins |>
 
 > I can see that in sex there are some `NA` values now, which means the code has partially worked, I guess. 
 
-## `select()` issues
+## `select()` issues {visibility="hidden"}
 
 ```{r}
 penguins |>
@@ -378,7 +406,7 @@ penguins |>
   mutate(mean_body_mass = round(mean_body_mass, digits = 0))
 ```
 
-# Air code formatter
+# Air code formatter {visibility="hidden"}
 
 ![](https://posit-dev.github.io/air/images/air.png){fig-align="center"}
 

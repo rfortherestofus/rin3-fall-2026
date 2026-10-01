@@ -24,17 +24,6 @@ penguins |>
   )
 
 
-# Summary functions ------------------------------------------------------
-
-penguins |>
-  group_by(island, species) |>
-  summarize(
-    mean_bill_length = mean(bill_length_mm, na.rm = TRUE)
-  )
-
-mean(c(0, 1, 2))
-
-
 # How to Import Excel Files ----------------------------------------------
 
 library(readxl)
@@ -42,6 +31,17 @@ library(readxl)
 median_income <- read_excel(
   path = "data-raw/2019-obtn-by-county.xlsx",
   sheet = "Median Income"
+)
+
+# Note on encoding
+
+my_data <- read_csv("data-raw/week2-encoding.csv")
+
+guess_encoding("data-raw/week2-encoding.csv")
+
+my_data <- read_csv(
+  "data-raw/week2-encoding.csv",
+  locale = locale(encoding = "windows-1252")
 )
 
 # Projects vs Scripts ----------------------------------------------------
@@ -54,20 +54,12 @@ penguins |>
 penguins |>
   select(-c(bill_length_mm:body_mass_g))
 
+penguins |>
+  select(-bill_length_mm:body_mass_g)
+
 read_csv("data-raw/penguins_data.csv", na = c("-999", "-999.0"))
 
-# select() issues ---------------------------------------------------------
 
-penguins |>
-  select(-island:year)
-
-penguins |>
-  select(c(-1, island:bill_length_mm))
-
-# Does not remove the "species" variable but this does:
-
-penguins |>
-  select(island:year)
 
 # NA values ---------------------------------------------------------------
 
@@ -92,3 +84,27 @@ penguins |>
   group_by(sex) |>
   summarize(mean_body_mass = mean(body_mass_g)) |>
   mutate(mean_body_mass = comma(mean_body_mass, accuracy = 0.1))
+
+
+# # Summary functions ------------------------------------------------------
+
+# penguins |>
+#   group_by(island, species) |>
+#   summarize(
+#     mean_bill_length = mean(bill_length_mm, na.rm = TRUE)
+#   )
+
+# mean(c(0, 1, 2))
+
+# select() issues ---------------------------------------------------------
+
+# penguins |>
+#   select(-island:year)
+
+# penguins |>
+#   select(-1, c(island:bill_length_mm))
+
+# # Does not remove the "species" variable but this does:
+
+# penguins |>
+#   select(island:year)
