@@ -11,6 +11,7 @@
 
 .countdown {
   --_margin: 0.6em;
+  --countdown-color-background: rgba(255, 255, 255, 0.7);
   --_running-color: var(--countdown-color-running-text, rgba(0, 0, 0, 0.8));
   --_running-background: var(--countdown-color-running-background, #43AC6A);
   --_running-border-color: var(--countdown-color-running-border, rgba(0, 0, 0, 0.1));
