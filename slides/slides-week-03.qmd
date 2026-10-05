@@ -46,7 +46,7 @@ Please put your answer in the chat!
 
 
 ::: {.notes}
-https://rin3spring2026.rfortherestofus.com/slides/slides-week-03.html
+https://rin3fall2026.rfortherestofus.com/slides/slides-week-03.html
 :::
 
 # Housekeeping {.inverse}
@@ -112,6 +112,42 @@ ggplot(
 ## Color vs fill
 
 > Why is it that the `color=` option is treated differently by `geom_point` and `geom_col`? The logic seems inconsistent here since `color=` is used as if it is `fill=` by `geom_point`. What if I want the scatter plot to have black dots with outline color different by island?
+
+## Assessment break
+
+{{< countdown "1:00" top=0 right=0 >}}
+
+You want a scatter plot of `bill_length_mm` vs. `bill_depth_mm` with **black-filled** dots whose **outline** color differs by `island`. Which `geom_point()` call does this?
+
+:::{.small}
+1. `geom_point(aes(color = island), fill = "black")`
+1. `geom_point(aes(color = island), fill = "black", shape = 21)`
+1. `geom_point(aes(fill = island), color = "black")`
+1. `geom_point(aes(outline = island), color = "black")`
+:::
+
+## Assessment break
+
+You want a scatter plot of `bill_length_mm` vs. `bill_depth_mm` with **black-filled** dots whose **outline** color differs by `island`. Which `geom_point()` call does this?
+
+::: {.nonincremental}
+:::{.small}
+1. `geom_point(aes(color = island), fill = "black")`
+1. [**`geom_point(aes(color = island), fill = "black", shape = 21)`**]{.mark}
+1. `geom_point(aes(fill = island), color = "black")`
+1. `geom_point(aes(outline = island), color = "black")`
+:::
+:::
+
+:::{.notes}
+**2**
+
+`color` always means the outline/stroke and `fill` the interior, for both `geom_point()` and `geom_col()`. The default point shape 19 is solid with no separate interior, so `color` paints the whole dot and `fill` is ignored. Shapes 21–25 have a border (`color`) and an interior (`fill`), so `shape = 21` with `fill = "black"` and `aes(color = island)` gives black dots with island-colored outlines. Add `stroke = 1.5` to make the outline easier to see.
+
+- 1: `fill` is ignored because the shape is still 19.
+- 3: Reverses the roles. It also needs `shape = 21` for `fill` to show.
+- 4: `outline` is not a ggplot2 aesthetic.
+:::
 
 ## Is there a "correct" order to put geoms, scales, themes, etc? {.inverse}
 
