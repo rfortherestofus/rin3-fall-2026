@@ -43,7 +43,7 @@ Put your answer in the chat!
 5.  Next Week
 
 ::: notes
-https://rin3spring2026.rfortherestofus.com/slides/slides-week-04.html
+https://rin3fall2026.rfortherestofus.com/slides/slides-week-04.html
 :::
 
 # Housekeeping
@@ -240,7 +240,7 @@ https://rfortherestofus.com/2025/06/podcast-episode-27
 ::: notes
 - A project with a Quarto file works different than a Quarto project
 - For this program, keep your Quarto file on the root directory
-- Gracielle recorded an extra lesson about that: https://rfortherestofus.com/courses/r-in-3-months-spring-2026/lessons/quarto-rendering-and-working-directories
+- Gracielle recorded an extra lesson about that: https://rfortherestofus.com/courses/r-in-3-months-fall-2026/lessons/quarto-rendering-and-working-directories
 :::
 
 ## Any Other Quarto Questions? {.inverse}

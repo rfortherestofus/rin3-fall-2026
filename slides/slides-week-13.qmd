@@ -41,9 +41,9 @@ library(janitor)
 4. Wrapping Up
 
 ::: notes
-https://rin3spring2026.rfortherestofus.com/slides/slides-week-13.html
+https://rin3fall2026.rfortherestofus.com/slides/slides-week-13.html
 
-https://rfortherestofus.com/courses/r-in-3-months-spring-2026/lessons/r-in-3-months-progress-survey
+https://rfortherestofus.com/courses/r-in-3-months-fall-2026/lessons/r-in-3-months-progress-survey
 :::
 
 
@@ -120,7 +120,7 @@ pre_post_plot <- function(area) {
 ```
 
 ::: {.notes}
-https://rfortherestofus.com/courses/r-in-3-months-spring-2026/lessons/r-in-3-months-progress-survey
+https://rfortherestofus.com/courses/r-in-3-months-fall-2026/lessons/r-in-3-months-progress-survey
 :::
 
 ## Data Analysis

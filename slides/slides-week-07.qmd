@@ -33,7 +33,7 @@ P
 1. Next Week
 
 ::: {.notes}
-https://rin3spring2026.rfortherestofus.com/slides/slides-week-07.html
+https://rin3fall2026.rfortherestofus.com/slides/slides-week-07.html
 :::
 
 # Housekeeping {.inverse}
@@ -70,7 +70,7 @@ https://rin3spring2026.rfortherestofus.com/slides/slides-week-07.html
 I'm seeing a difference in the syntax used in the main video vs the solution video and am wondering if you can please explain the difference. In the main video, you use `separate_longer_delim(cols = activities,...` but the solution video uses `separate_longer_delim(partyid,...` without the use of `cols =`.
 
 ::: {.notes}
-https://rfortherestofus.com/courses/r-in-3-months-spring-2026/lessons/using-function-arguments
+https://rfortherestofus.com/courses/r-in-3-months-fall-2026/lessons/using-function-arguments
 :::
 
 

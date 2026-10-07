@@ -43,7 +43,7 @@ library(janitor)
 1. Next Week
 
 ::: {.notes}
-https://rin3spring2026.rfortherestofus.com/slides/slides-week-12.html
+https://rin3fall2026.rfortherestofus.com/slides/slides-week-12.html
 :::
   
 # Housekeeping
@@ -200,7 +200,7 @@ What is still confusing to you about parameterized reporting?
 
 # Next Week
 
-- Surveys on your [progress](https://rfortherestofus.com/courses/r-in-3-months-spring-2026/lessons/r-in-3-months-progress-survey) and on [feedback](https://rfortherestofus.com/courses/r-in-3-months-spring-2026/lessons/r-in-3-months-feedback-survey) for R in 3 Months
+- Surveys on your [progress](https://rfortherestofus.com/courses/r-in-3-months-fall-2026/lessons/r-in-3-months-progress-survey) and on [feedback](https://rfortherestofus.com/courses/r-in-3-months-fall-2026/lessons/r-in-3-months-feedback-survey) for R in 3 Months
   
 - Please complete final projects **even if you haven't completed every single lesson**
 

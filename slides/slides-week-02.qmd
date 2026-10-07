@@ -50,7 +50,7 @@ Please put your answer in the chat!
 1. Next Week
 
 ::: {.notes}
-https://rin3spring2026.rfortherestofus.com/slides/slides-week-02.html
+https://rin3fall2026.rfortherestofus.com/slides/slides-week-02.html
 :::
 
 # Housekeeping {.inverse}

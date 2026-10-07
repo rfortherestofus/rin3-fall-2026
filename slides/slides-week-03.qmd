@@ -53,24 +53,23 @@ https://rin3fall2026.rfortherestofus.com/slides/slides-week-03.html
 
 ## Housekeeping
 
-- Videos for from second half of course are being added this week
+- Zoom links for live sessions and co-working sessions
 
-- RStudio
+- Check in on co-working sessions
 
-- Live session during catch-up week (April 9) on using AI with R. Email us your questions!
+- Ally
+
+- Live session during catch-up week (October 22) on using AI with R. Email us your questions!
 
 ::: {.notes}
-RStudio
-
-- Not going away (similar to RMarkdown vs Quarto)
-- Posit surprised by continued use so made Posit Assistant
-- Nothing wrong with using it
-
-We'll discuss in live session: 
-
-- Various ways to use AI (fix + explain, Positron Assistant, Posit Assistant, Claude Code, etc)
-- AI + data privacy
+- Live session: https://us02web.zoom.us/j/81854241353?pwd=5bTapMvscCHxwGFvnxVtHT9LeldFZ5.1
+- Co-working session: https://us02web.zoom.us/j/83984031775?pwd=LzY97la5qme1erStTo8XYeSbuOjXhh.1&jst=4
+- ALLYRIN3 coupon
 :::
+
+# Indentation
+
+![](https://posit-dev.github.io/air/images/air.png)
 
 # ggplot {.inverse}
 
@@ -151,15 +150,23 @@ You want a scatter plot of `bill_length_mm` vs. `bill_depth_mm` with **black-fil
 
 ## Is there a "correct" order to put geoms, scales, themes, etc? {.inverse}
 
+## Ensuring legible labels when flipping a bar chart
+
+> I wanted to do this as a horizontal bar chart rather than a vertical column chart, but I couldn’t figure out how to adjust the placement of the labels so that they were legible.
+
 ## Width of bars in bar charts {.inverse}
 
 ## Reordering bar charts {.inverse}
 
 ::: {.notes}
-https://rfortherestofus.com/courses/r-in-3-months-spring-2026/lessons/reorder-plots-to-highlight-findings-positron
+https://rfortherestofus.com/courses/r-in-3-months-fall-2026/lessons/reorder-plots-to-highlight-findings-positron
 :::
 
 ## Wrapping long text in charts {.inverse}
+
+## Removing the legend {.inverse}
+
+> Is there a way to remove the legend altogether?
 
 # Data Viz Exercise {.inverse}
 
@@ -168,7 +175,7 @@ https://rfortherestofus.com/courses/r-in-3-months-spring-2026/lessons/reorder-pl
 ![](assets/median-income-example.png)
 
 ::: notes
-- https://raw.githubusercontent.com/rfortherestofus/rin3-spring-2026/refs/heads/main/misc/median-income-viz.R
+- https://raw.githubusercontent.com/rfortherestofus/rin3-fall-2026/refs/heads/main/misc/median-income-viz.R
 - https://graciellehigino.quarto.pub/rin3-data-viz-exercise-yamhill-income/
 :::
 

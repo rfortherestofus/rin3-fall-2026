@@ -5,7 +5,7 @@ library(ggchicklet)
 library(scales)
 
 cbem <-
-  read_csv("https://rin3spring2026.rfortherestofus.com/data-raw/cbem.csv")
+  read_csv("https://rin3fall2026.rfortherestofus.com/data-raw/cbem.csv")
 
 cbem_plot <- function(filter_state, filter_age_group) {
   cbem_filtered <-

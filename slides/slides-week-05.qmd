@@ -37,7 +37,7 @@ editor_options:
 6. Next Week
 
 ::: notes
-https://rin3spring2026.rfortherestofus.com/slides/slides-week-05.html
+https://rin3fall2026.rfortherestofus.com/slides/slides-week-05.html
 :::
 
 # Overview {.inverse}

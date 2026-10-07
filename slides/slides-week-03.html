@@ -6,10 +6,10 @@
 <script src="slides-week-03_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="slides-week-03_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="slides-week-03_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="slides-week-03_files/libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="slides-week-03_files/libs/quarto-html/quarto-syntax-highlighting-9c5e1a58ae97b3faeeb5cca0e0e2eaf1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="slides-week-03_files/libs/quarto-contrib/countdown-0.6.0/countdown.js"></script>
 <link href="slides-week-03_files/libs/quarto-contrib/countdown-0.6.0/countdown.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.26">
+  <meta name="generator" content="quarto-1.10.0">
 
   <title>R in 3 Months Week 3 (Data Visualization)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="slides-week-03_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="slides-week-03_files/libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -96,7 +99,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="slides-week-03_files/libs/revealjs/dist/theme/quarto-3ba29524185537f454d304d0a1c4b243.css">
+  <link rel="stylesheet" href="slides-week-03_files/libs/revealjs/dist/theme/quarto-904b9709d6858400bccbddab514e9f21.css">
   <link href="slides-week-03_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="slides-week-03_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="slides-week-03_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -236,21 +239,16 @@
 <section id="housekeeping-1" class="slide level2 center">
 <h2>Housekeeping</h2>
 <ul>
-<li class="fragment"><p>Videos for from second half of course are being added this week</p></li>
-<li class="fragment"><p>RStudio</p></li>
-<li class="fragment"><p>Live session during catch-up week (April 9) on using AI with R. Email us your questions!</p></li>
+<li class="fragment"><p>Zoom links for live sessions and co-working sessions</p></li>
+<li class="fragment"><p>Check in on co-working sessions</p></li>
+<li class="fragment"><p>Ally</p></li>
+<li class="fragment"><p>Live session during catch-up week (October 22) on using AI with R. Email us your questions!</p></li>
 </ul>
 <aside class="notes">
-<p>RStudio</p>
 <ul>
-<li>Not going away (similar to RMarkdown vs Quarto)</li>
-<li>Posit surprised by continued use so made Posit Assistant</li>
-<li>Nothing wrong with using it</li>
-</ul>
-<p>We’ll discuss in live session:</p>
-<ul>
-<li>Various ways to use AI (fix + explain, Positron Assistant, Posit Assistant, Claude Code, etc)</li>
-<li>AI + data privacy</li>
+<li>Live session: https://us02web.zoom.us/j/81854241353?pwd=5bTapMvscCHxwGFvnxVtHT9LeldFZ5.1</li>
+<li>Co-working session: https://us02web.zoom.us/j/83984031775?pwd=LzY97la5qme1erStTo8XYeSbuOjXhh.1&amp;jst=4</li>
+<li>ALLYRIN3 coupon</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -264,6 +262,11 @@
           display:block!important;
       }</style></aside>
 </section></section>
+<section id="indentation" class="title-slide slide level1 center">
+<h1>Indentation</h1>
+
+<img data-src="https://posit-dev.github.io/air/images/air.png" class="r-stretch"></section>
+
 <section>
 <section id="ggplot" class="title-slide slide level1 inverse center">
 <h1>ggplot</h1>
@@ -320,7 +323,7 @@
 </section>
 <section id="assessment-break" class="slide level2 center">
 <h2>Assessment break</h2>
-<countdown-timer id="timer_99de211bff42d6455976d9eedf426d55d6847048" minutes="01" seconds="00" class="countdown" warn-when="0" update-every="1" play-sound="false" blink-colon="false" start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<countdown-timer id="timer_1a5d8cd54acf8b984b95dd22c72c81c3ce634ea7" minutes="01" seconds="00" class="countdown" warn-when="0" update-every="1" play-sound="false" blink-colon="false" start-immediately="false" tabindex="0" style="top: 0;right: 0;">
  </countdown-timer>
 <p>You want a scatter plot of <code>bill_length_mm</code> vs.&nbsp;<code>bill_depth_mm</code> with <strong>black-filled</strong> dots whose <strong>outline</strong> color differs by <code>island</code>. Which <code>geom_point()</code> call does this?</p>
 <div class="small">
@@ -366,13 +369,19 @@
 <section id="is-there-a-correct-order-to-put-geoms-scales-themes-etc" class="slide level2 inverse center">
 <h2>Is there a “correct” order to put geoms, scales, themes, etc?</h2>
 </section>
+<section id="ensuring-legible-labels-when-flipping-a-bar-chart" class="slide level2 center">
+<h2>Ensuring legible labels when flipping a bar chart</h2>
+<blockquote>
+<p>I wanted to do this as a horizontal bar chart rather than a vertical column chart, but I couldn’t figure out how to adjust the placement of the labels so that they were legible.</p>
+</blockquote>
+</section>
 <section id="width-of-bars-in-bar-charts" class="slide level2 inverse center">
 <h2>Width of bars in bar charts</h2>
 </section>
 <section id="reordering-bar-charts" class="slide level2 inverse center">
 <h2>Reordering bar charts</h2>
 <aside class="notes">
-<p>https://rfortherestofus.com/courses/r-in-3-months-spring-2026/lessons/reorder-plots-to-highlight-findings-positron</p>
+<p>https://rfortherestofus.com/courses/r-in-3-months-fall-2026/lessons/reorder-plots-to-highlight-findings-positron</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -387,6 +396,12 @@
 </section>
 <section id="wrapping-long-text-in-charts" class="slide level2 inverse center">
 <h2>Wrapping long text in charts</h2>
+</section>
+<section id="removing-the-legend" class="slide level2 inverse center">
+<h2>Removing the legend</h2>
+<blockquote>
+<p>Is there a way to remove the legend altogether?</p>
+</blockquote>
 </section></section>
 <section>
 <section id="data-viz-exercise" class="title-slide slide level1 inverse center">
@@ -398,7 +413,7 @@
 
 <img data-src="assets/median-income-example.png" class="r-stretch"><aside class="notes">
 <ul>
-<li>https://raw.githubusercontent.com/rfortherestofus/rin3-spring-2026/refs/heads/main/misc/median-income-viz.R</li>
+<li>https://raw.githubusercontent.com/rfortherestofus/rin3-fall-2026/refs/heads/main/misc/median-income-viz.R</li>
 <li>https://graciellehigino.quarto.pub/rin3-data-viz-exercise-yamhill-income/</li>
 </ul>
 <style type="text/css">

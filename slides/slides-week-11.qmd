@@ -45,14 +45,14 @@ library(janitor)
 1. Next Week
 
 ::: {.notes}
-https://rin3spring2026.rfortherestofus.com/slides/slides-week-11.html
+https://rin3fall2026.rfortherestofus.com/slides/slides-week-11.html
 :::
 
 # Housekeeping
 
 1. Two more weeks: Advanced Quarto and final projects
 
-1. Final project is to record a video demonstrating something you've learned ([lesson](https://rfortherestofus.com/courses/r-in-3-months-spring-2026/lessons/spring-2026-r-in-3-months-final-project))
+1. Final project is to record a video demonstrating something you've learned ([lesson](https://rfortherestofus.com/courses/r-in-3-months-fall-2026/lessons/spring-2026-r-in-3-months-final-project))
 
 ::: {.notes}
 Please submit things!

@@ -38,7 +38,7 @@ ggplot(
     color = island
   )
 ) +
-  geom_point(shape = 11)
+  geom_point()
 
 
 ggplot(
@@ -87,7 +87,8 @@ ggplot(
 ) +
   geom_col()
 
-# Bar Chart Width ---------------------------------------------------------
+
+# Ensuring legible labels ------------------------------------------------
 
 ggplot(
   data = penguins_bill_length_by_island,
@@ -95,6 +96,20 @@ ggplot(
     x = island,
     y = mean_bill_length,
     label = mean_bill_length,
+    fill = island
+  )
+) +
+  geom_col() +
+  geom_text(vjust = 1.5) +
+  theme_minimal()
+
+# Bar Chart Width ---------------------------------------------------------
+
+ggplot(
+  data = penguins_bill_length_by_island,
+  aes(
+    x = island,
+    y = mean_bill_length,
     fill = island
   )
 ) +
@@ -122,27 +137,35 @@ ggplot(
   )
 ) +
   geom_col() +
-  labs(x = NULL)
+  labs(x = NULL) +
+  theme_minimal()
 
-penguins_by_species_reordered <-
-  penguins_by_species |>
-  mutate(species = fct(species, levels = c("Adelie", "Chinstrap", "Gentoo")))
+penguins_by_species |>
+  mutate(species = fct(species, levels = c("Adelie", "Chinstrap", "Gentoo"))) |>
+  ggplot(
+    mapping = aes(
+      x = species,
+      y = n,
+      fill = species
+    )
+  ) +
+  geom_col() +
+  theme_minimal()
 
-penguins_by_species_reordered
 
-# mutate(species = fct(species, levels = c("Adelie", "Chinstrap", "Gentoo")))
-# mutate(species = fct_reorder(species, n)) |>
-# mutate(species = fct_rev(species))
+# Hiding legend ----------------------------------------------------------
 
-ggplot(
-  data = penguins_by_species_reordered,
-  mapping = aes(
-    x = species,
-    y = n,
-    fill = species
-  )
-) +
-  geom_col()
+penguins_by_species |>
+  mutate(species = fct(species, levels = c("Adelie", "Chinstrap", "Gentoo"))) |>
+  ggplot(
+    mapping = aes(
+      x = species,
+      y = n,
+      fill = species
+    )
+  ) +
+  geom_col() +
+  theme_minimal()
 
 
 # Wrapping Long Text ------------------------------------------------------
@@ -175,15 +198,3 @@ ggplot(
 ) +
   geom_line() +
   facet_wrap(vars(country_wrapped))
-
-gapminder |>
-  mutate(country_wrapped = str_wrap(country, width = 10)) |>
-  ggplot(
-    aes(
-      x = year,
-      y = lifeExp
-    )
-  ) +
-  geom_line() +
-  facet_wrap(vars(country_wrapped)) +
-  theme(axis.text.x = element_blank())
