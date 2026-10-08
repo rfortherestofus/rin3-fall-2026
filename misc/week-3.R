@@ -21,7 +21,7 @@ penguins_by_species <-
 ggplot(
   data = penguins, # why can't I use == within this function?
   mapping = aes(
-    x = flipper_length_mm, # must be lowercase x and y
+    x = flipper_length_mm,
     y = body_mass_g
   )
 ) +
@@ -56,14 +56,22 @@ ggplot(
   aes(
     x = flipper_length_mm,
     y = body_mass_g,
-    fill = island
+    fill = island,
+    color = species
   )
 ) +
   geom_point(
-    shape = 21,
-    color = "white",
-    alpha = 0.75
+    shape = 21
   )
+
+ggplot(
+  penguins,
+  aes(
+    x = bill_length_mm,
+    y = bill_depth_mm
+  )
+) +
+  geom_point(aes(color = island), fill = "black", shape = 21)
 
 
 # `geom_bar()` vs `geom_col()` -------------------------------------------
@@ -93,14 +101,14 @@ ggplot(
 ggplot(
   data = penguins_bill_length_by_island,
   aes(
-    x = island,
-    y = mean_bill_length,
+    y = island,
+    x = mean_bill_length,
     label = mean_bill_length,
     fill = island
   )
 ) +
   geom_col() +
-  geom_text(vjust = 1.5) +
+  geom_text(hjust = 1.1, size = 10) +
   theme_minimal()
 
 # Bar Chart Width ---------------------------------------------------------
@@ -113,13 +121,17 @@ ggplot(
     fill = island
   )
 ) +
-  geom_col() +
+  geom_col(width = 1) +
   theme_minimal()
 
 # Reordering Bar Charts ---------------------------------------------------
 
+penguins_by_species_arrange <-
+  penguins_by_species |>
+  arrange(desc(species))
+
 ggplot(
-  data = penguins_by_species,
+  data = penguins_by_species_arrange,
   mapping = aes(
     x = species,
     y = n,
@@ -136,27 +148,26 @@ ggplot(
     fill = species
   )
 ) +
-  geom_col() +
-  labs(x = NULL) +
-  theme_minimal()
+  geom_col()
 
-penguins_by_species |>
-  mutate(species = fct(species, levels = c("Adelie", "Chinstrap", "Gentoo"))) |>
-  ggplot(
-    mapping = aes(
-      x = species,
-      y = n,
-      fill = species
-    )
-  ) +
-  geom_col() +
-  theme_minimal()
+penguins_by_species_factor <-
+  penguins_by_species |>
+  mutate(species = fct(species, levels = c("Chinstrap", "Adelie", "Gentoo")))
+
+ggplot(
+  data = penguins_by_species_factor,
+  mapping = aes(
+    x = species,
+    y = n,
+    fill = species
+  )
+) +
+  geom_col()
 
 
 # Hiding legend ----------------------------------------------------------
 
 penguins_by_species |>
-  mutate(species = fct(species, levels = c("Adelie", "Chinstrap", "Gentoo"))) |>
   ggplot(
     mapping = aes(
       x = species,
@@ -165,7 +176,8 @@ penguins_by_species |>
     )
   ) +
   geom_col() +
-  theme_minimal()
+  theme_minimal() +
+  theme(legend.position = "none")
 
 
 # Wrapping Long Text ------------------------------------------------------
@@ -173,6 +185,22 @@ penguins_by_species |>
 library(gapminder)
 
 data("gapminder")
+
+gapminder
+
+gapminder_afghanistan <-
+  gapminder |>
+  filter(country == "Afghanistan")
+
+ggplot(
+  data = gapminder_afghanistan,
+  aes(
+    x = year,
+    y = lifeExp,
+    group = country
+  )
+) +
+  geom_line()
 
 ggplot(
   data = gapminder,
@@ -198,3 +226,5 @@ ggplot(
 ) +
   geom_line() +
   facet_wrap(vars(country_wrapped))
+
+ggsave("plots/gapminder-wrapped.png")

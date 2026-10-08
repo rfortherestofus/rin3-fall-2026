@@ -57,6 +57,8 @@ https://rin3fall2026.rfortherestofus.com/slides/slides-week-03.html
 
 - Check in on co-working sessions
 
+- Feedback location
+
 - Ally
 
 - Live session during catch-up week (October 22) on using AI with R. Email us your questions!
@@ -64,6 +66,7 @@ https://rin3fall2026.rfortherestofus.com/slides/slides-week-03.html
 ::: {.notes}
 - Live session: https://us02web.zoom.us/j/81854241353?pwd=5bTapMvscCHxwGFvnxVtHT9LeldFZ5.1
 - Co-working session: https://us02web.zoom.us/j/83984031775?pwd=LzY97la5qme1erStTo8XYeSbuOjXhh.1&jst=4
+- https://rfortherestofus.com/feedback
 - ALLYRIN3 coupon
 :::
 
