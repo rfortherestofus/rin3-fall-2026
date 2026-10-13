@@ -48,9 +48,8 @@ https://rin3fall2026.rfortherestofus.com/slides/slides-week-04.html
 
 # Housekeeping
 
-1. Next week is a catch-up week: optional live session on AI
+1. Next week is a catch-up week: optional coworking session on Tuesday + optional live session on AI on Thursday
 
-1. Updated cheatsheets will be ready soon
 
 # When is data real? {.inverse}
 
@@ -142,6 +141,28 @@ Show state immunization reports: https://publichealth.jhu.edu/ivac/resources/rep
 . . .
 
 Many people do data cleaning and exploratory data analysis in Quarto documents!
+
+## Assessment break
+
+{{< countdown "1:00" top=0 right=0 >}}
+
+Which YAML line will cause an error?
+
+1. `title: "My report"`
+2. `title:"My report"`
+3. `author: "Ana"`
+4. `date: today`
+
+## Assessment break
+
+Which YAML line will cause an error?
+
+::: {.nonincremental}
+1. `title: "My report"`
+2. [**`title:"My report"`**]{.mark}
+3. `author: "Ana"`
+4. `date: today`
+:::
 
 ## How to change the size of plots in Quarto documents
 
@@ -235,6 +256,9 @@ https://posit-dev.github.io/brand-yml/
 https://rfortherestofus.com/2025/06/podcast-episode-27
 :::
 
+<!--- I think this is a bit advanced for this cohort at this point, so I'm
+  removing it. We can chat about it in the advanced weeks, if needed.
+
 # Quick note about projects with Quarto {.inverse}
 
 ::: notes
@@ -242,6 +266,7 @@ https://rfortherestofus.com/2025/06/podcast-episode-27
 - For this program, keep your Quarto file on the root directory
 - Gracielle recorded an extra lesson about that: https://rfortherestofus.com/courses/r-in-3-months-fall-2026/lessons/quarto-rendering-and-working-directories
 :::
+--->
 
 ## Any Other Quarto Questions? {.inverse}
 
