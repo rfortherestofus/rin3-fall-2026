@@ -1,0 +1,21 @@
+---
+title: Does Not Render
+format: html
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+penguins <- read_csv(
+  "https://raw.githubusercontent.com/rfortherestofus/rin3-spring-2026/main/data-raw/penguins.csv"
+)
+```
+
+```{r}
+penguins |>
+  count(island) |>
+  ggplot(aes(x = island, y = n)) +
+  geom_col()
+```

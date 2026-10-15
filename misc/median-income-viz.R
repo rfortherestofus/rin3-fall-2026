@@ -11,6 +11,7 @@
 # See https://www.tfff.org/oregon-numbers/
 
 library(tidyverse)
+library(camcorder)
 
 median_income_yamhill <-
   read_csv(
@@ -18,29 +19,37 @@ median_income_yamhill <-
   ) |>
   filter(geography %in% c("Yamhill", "Oregon"))
 
+gg_record(
+  device = "png",
+  width = 8,
+  height = 3,
+  unit = "in"
+)
+
+
 ggplot(
   data = median_income_yamhill,
   aes(
-    x = TODO,
-    y = TODO,
-    label = TODO,
-    fill = TODO
+    x = amount,
+    y = geography,
+    fill = geography
   )
 ) +
-
   # This geom_col() adds the bars
   geom_col(show.legend = FALSE) +
-
   # This geom_text() adds the amount labels
   geom_text(
-    color = "white",
-    hjust = 1.2
+    aes(
+      label = amount_formatted,
+      x = amount - 5000
+    ),
+    color = "white"
+    # hjust = 1.2
   ) +
-
   # This geom_text() adds Oregon and Yamhill
   geom_text(
     aes(
-      x = 10000,
+      x = 5000,
       label = geography
     ),
     color = "white"
@@ -48,8 +57,13 @@ ggplot(
 
   # This sets the colors of the bars
   scale_fill_manual(
-    values = c(TODO)
+    values = c(
+      "Yamhill" = "darkgreen",
+      "Oregon" = "gray"
+    )
   ) +
 
   # This adjusts the theme to remove everything
   theme_void()
+
+ggsave()
