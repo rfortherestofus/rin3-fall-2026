@@ -34,7 +34,9 @@ editor_options:
 
 5. Analyzing Data
 
-6. Next Week
+6. Explain Code
+
+7. Next Week
 
 ::: notes
 https://rin3fall2026.rfortherestofus.com/slides/slides-week-05.html
@@ -88,7 +90,7 @@ https://posit.co/blog/trust-llm-tools/
 
 - Desktop app (e.g. Claude)
 
-- In Positron or RStudio (via Positron Assistant / Posit Assistant)
+- In Positron or RStudio (via Posit Assistant)
 
 - IDE extension
 
@@ -124,9 +126,7 @@ https://posit.co/blog/introducing-ai-in-rstudio/
 
 1. Code completion
 
-2. Fix and Explain
-
-3. Agentic AI
+2. Agentic AI
 
 # Code Completion {.inverse}
 
@@ -134,25 +134,13 @@ https://posit.co/blog/introducing-ai-in-rstudio/
 Rebecca Barter talk from posit::conf: https://www.youtube.com/watch?v=1hfu1AvQkLw
 :::
 
-# Fix and Explain {.inverse}
-
-## Fix and Explain
-
-- Positron Assistant
-
-- Claude Code
-
 # Agentic AI {.inverse}
 
 ## Agentic AI
 
-- Positron Assistant
-
-  - Using GitHub Copilot
-
-  - Using Claude
-
 - Claude Code
+
+- Codex
 
 - Posit Assistant
 
@@ -160,11 +148,11 @@ Rebecca Barter talk from posit::conf: https://www.youtube.com/watch?v=1hfu1AvQkL
 
 1. Plan
 
-2. Ask before edit
+2. Manual
 
 3. Edit automatically
 
-4. Bypass permissions
+4. Auto
 
 # Analyzing Data {.inverse}
 
@@ -172,11 +160,7 @@ Rebecca Barter talk from posit::conf: https://www.youtube.com/watch?v=1hfu1AvQkL
 
 - Write code to analyze data
 
-- Databot
-
-::: notes
-https://posit.co/blog/databot-is-not-a-flotation-device/
-:::
+# Explain Code {.inverse}
 
 # Next Week 
 
