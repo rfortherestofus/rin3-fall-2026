@@ -230,23 +230,6 @@ Rule 2: Create demographics and favorite_parts df
 Show breaking things into pieces
 
 Show converting character data into numeric
-
-Recategorize race + ethnicity
-:::
-
-
-# Misc Questions {.inverse .hidden}
-
-::: {.notes}
-How to format large numbers (scale::number or scale::comma)
-
-How to format numbers as currency
-
-How to remove categories
-
-How to combine categories
-
-How to remove x axis text
 :::
 
 # Next Week
