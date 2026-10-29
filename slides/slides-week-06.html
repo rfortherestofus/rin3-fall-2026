@@ -6,7 +6,9 @@
 <script src="slides-week-06_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="slides-week-06_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="slides-week-06_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="slides-week-06_files/libs/quarto-html/quarto-syntax-highlighting-9c5e1a58ae97b3faeeb5cca0e0e2eaf1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="slides-week-06_files/libs/quarto-html/quarto-syntax-highlighting-9c5e1a58ae97b3faeeb5cca0e0e2eaf1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="slides-week-06_files/libs/quarto-contrib/countdown-0.6.0/countdown.js"></script>
+<link href="slides-week-06_files/libs/quarto-contrib/countdown-0.6.0/countdown.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.0">
 
   <title>R in 3 Months Week 6 (Tidy Data)</title>
@@ -466,6 +468,84 @@
 </div>
 </div>
 </section>
+<section id="assessment-break" class="slide level2 center">
+<h2>Assessment break</h2>
+<countdown-timer id="timer_8c66af741df28a9498054c38754dba1c97b90ec1" minutes="01" seconds="00" class="countdown" warn-when="0" update-every="1" play-sound="false" blink-colon="false" start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+ </countdown-timer>
+<p>Which tidy data rule does this data break?</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>patient</th>
+<th>blood_pressure</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ana</td>
+<td>120/80</td>
+</tr>
+<tr class="even">
+<td>Ben</td>
+<td>135/85</td>
+</tr>
+<tr class="odd">
+<td>Cara</td>
+<td>110/70</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li class="fragment">Rule #1: Every column is a variable</li>
+<li class="fragment">Rule #2: Every row is an observation</li>
+<li class="fragment">Rule #3: Every cell is a single value</li>
+</ol>
+</section>
+<section id="assessment-break-1" class="slide level2 center">
+<h2>Assessment break</h2>
+<p>Which tidy data rule does this data break?</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>patient</th>
+<th>blood_pressure</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ana</td>
+<td>120/80</td>
+</tr>
+<tr class="even">
+<td>Ben</td>
+<td>135/85</td>
+</tr>
+<tr class="odd">
+<td>Cara</td>
+<td>110/70</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>Rule #1: Every column is a variable</li>
+<li>Rule #2: Every row is an observation</li>
+<li><mark><strong>Rule #3: Every cell is a single value</strong></mark></li>
+</ol>
+<aside class="notes">
+<p><strong>3</strong></p>
+<p>Each cell holds two values: systolic and diastolic. Fix with <code>separate_wider_delim(cols = blood_pressure, delim = "/", names = c("systolic", "diastolic"))</code>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="tidy-data-question" class="slide level2 center">
 <h2>Tidy Data Question</h2>
 <blockquote>
@@ -493,28 +573,6 @@
 <p>Rule 2: Create demographics and favorite_parts df</p>
 <p>Show breaking things into pieces</p>
 <p>Show converting character data into numeric</p>
-<p>Recategorize race + ethnicity</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-
-<section id="misc-questions" class="title-slide slide level1 inverse hidden center">
-<h1>Misc Questions</h1>
-<aside class="notes">
-<p>How to format large numbers (scale::number or scale::comma)</p>
-<p>How to format numbers as currency</p>
-<p>How to remove categories</p>
-<p>How to combine categories</p>
-<p>How to remove x axis text</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;

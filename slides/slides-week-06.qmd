@@ -207,7 +207,43 @@ favorite_sports |>
   )
 ```
 
+## Assessment break
 
+{{< countdown "1:00" top=0 right=0 >}}
+
+Which tidy data rule does this data break?
+
+| patient | blood_pressure |
+|---------|----------------|
+| Ana     | 120/80         |
+| Ben     | 135/85         |
+| Cara    | 110/70         |
+
+1. Rule #1: Every column is a variable
+2. Rule #2: Every row is an observation
+3. Rule #3: Every cell is a single value
+
+## Assessment break
+
+Which tidy data rule does this data break?
+
+| patient | blood_pressure |
+|---------|----------------|
+| Ana     | 120/80         |
+| Ben     | 135/85         |
+| Cara    | 110/70         |
+
+::: {.nonincremental}
+1. Rule #1: Every column is a variable
+2. Rule #2: Every row is an observation
+3. [**Rule #3: Every cell is a single value**]{.mark}
+:::
+
+:::{.notes}
+**3**
+
+Each cell holds two values: systolic and diastolic. Fix with `separate_wider_delim(cols = blood_pressure, delim = "/", names = c("systolic", "diastolic"))`.
+:::
 
 ## Tidy Data Question
 
