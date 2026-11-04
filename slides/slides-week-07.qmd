@@ -69,6 +69,51 @@ I'm seeing a difference in the syntax used in the main video vs the solution vid
 
 ## Advanced Functions {.inverse}
 
+## Assessment break
+
+{{< countdown "1:00" top=0 right=0 >}}
+
+Why does the following R code execute without throwing an error?
+
+```
+calc <- function(a, b = stop("b is missing!")) {
+  a * 2
+}
+calc(4)
+```
+:::{.small}
+A) R checks default arguments before running the function, but skips any errors.
+
+B) R automatically ignores `stop()` in default arguments.
+
+C) R only evaluates arguments when they are used. Since `b` is never used in the function, `stop()` is never called.
+
+D) R automatically sets `b` to `NULL` when it is not provided.
+:::
+
+## Assessment break
+
+Why does the following R code execute without throwing an error?
+
+```
+calc <- function(a, b = stop("b is missing!")) {
+  a * 2
+}
+calc(4)
+```
+
+::: {.nonincremental}
+:::{.small}
+A) R checks default arguments before running the function, but skips any errors.
+
+B) R automatically ignores `stop()` in default arguments.
+
+C) [R only evaluates arguments when they are used. Since `b` is never used in the function, `stop()` is never called.]{.mark}
+
+D) R automatically sets `b` to `NULL` when it is not provided.
+:::
+:::
+
 # Next Week
 
 - Course lessons cover data merging and data exporting
