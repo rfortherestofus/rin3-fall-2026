@@ -26,6 +26,10 @@ editor_options:
 
 1. Housekeeping
 
+1. Questions on Tidy Data
+
+1. Factors
+
 1. Functions
 
 1. Next Week
@@ -51,6 +55,8 @@ https://rin3fall2026.rfortherestofus.com/slides/slides-week-07.html
 -   Week 13: Wrap Up
 
 # Questions on Tidy Data? {.inverse}
+
+# Factors {.inverse}
 
 # Functions {.inverse}
 
