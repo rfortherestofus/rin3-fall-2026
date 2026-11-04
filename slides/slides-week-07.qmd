@@ -25,8 +25,6 @@ editor_options:
 # Agenda
 
 1. Housekeeping
-P
-1. Tidy Data Example
 
 1. Functions
 
@@ -54,13 +52,6 @@ https://rin3fall2026.rfortherestofus.com/slides/slides-week-07.html
 
 # Questions on Tidy Data? {.inverse}
 
-## Tidy Data Example {.inverse}
-
-::: {.notes}
-- places_by_type_and_rurality
-- population summaries
-:::
-
 # Functions {.inverse}
 
 ## Question on Function Arguments
@@ -68,10 +59,6 @@ https://rin3fall2026.rfortherestofus.com/slides/slides-week-07.html
 . . .
 
 I'm seeing a difference in the syntax used in the main video vs the solution video and am wondering if you can please explain the difference. In the main video, you use `separate_longer_delim(cols = activities,...` but the solution video uses `separate_longer_delim(partyid,...` without the use of `cols =`.
-
-::: {.notes}
-https://rfortherestofus.com/courses/r-in-3-months-fall-2026/lessons/using-function-arguments
-:::
 
 
 ## Advanced Functions {.inverse}
