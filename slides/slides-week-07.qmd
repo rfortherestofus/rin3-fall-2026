@@ -62,6 +62,8 @@ https://rin3fall2026.rfortherestofus.com/slides/slides-week-07.html
 
 # Factors {.inverse}
 
+> In gss_cats, partyid is shown to be of the type <fct>. Can you refresh my memory on this type and where it is used?
+
 # Functions {.inverse}
 
 ## Question on Function Arguments
