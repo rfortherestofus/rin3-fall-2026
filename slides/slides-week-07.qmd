@@ -22,6 +22,10 @@ editor_options:
   chunk_output_type: console
 ---
 
+# Functions
+
+What is one function you can imagine creating for your own use?
+
 # Agenda
 
 1. Housekeeping
