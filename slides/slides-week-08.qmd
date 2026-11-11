@@ -54,7 +54,7 @@ https://rin3fall2026.rfortherestofus.com/slides/slides-week-08.html
 
 ## Feedback
 
-You can get feedback through the end of June
+You can get feedback through the end of December
 
 # Your Questions {.inverse}
 
@@ -69,6 +69,85 @@ You can get feedback through the end of June
 - Mismatched variable types
 
 - Many-to-many joins
+
+## Assessment break
+
+{{< countdown "1:00" top=0 right=0 >}}
+
+::::: {.small}
+
+What happens to Mick after `left_join(people, instruments, by = "name")`?
+
+
+:::: {.columns}
+::: {.column width="50%"}
+**people**
+
+| name | band    |
+|------|---------|
+| Mick | Stones  |
+| John | Beatles |
+| Paul | Beatles |
+:::
+
+::: {.column width="50%"}
+**instruments**
+
+| name  | plays  |
+|-------|--------|
+| John  | guitar |
+| Paul  | bass   |
+| Keith | guitar |
+:::
+::::
+
+
+A) Mick is dropped because he has no match in `instruments`.
+
+B) Mick is kept, and his `plays` value is `NA`.
+
+C) The code throws an error because the key values don't fully match.
+
+D) Mick is matched with Keith's row because both play in a band.
+:::::
+
+## Assessment break
+::: {.small}
+What happens to Mick after `left_join(people, instruments, by = "name")`?
+
+:::: {.columns}
+::: {.column width="50%"}
+**people**
+
+| name | band    |
+|------|---------|
+| Mick | Stones  |
+| John | Beatles |
+| Paul | Beatles |
+:::
+
+::: {.column width="50%"}
+**instruments**
+
+| name  | plays  |
+|-------|--------|
+| John  | guitar |
+| Paul  | bass   |
+| Keith | guitar |
+:::
+::::
+
+::: {.nonincremental}
+
+A) Mick is dropped because he has no match in `instruments`.
+
+B) [Mick is kept, and his `plays` value is `NA`.]{.mark}
+
+C) The code throws an error because the key values don't fully match.
+
+D) Mick is matched with Keith's row because both play in a band.
+:::
+:::
 
 ## Iteration {.inverse}
 
