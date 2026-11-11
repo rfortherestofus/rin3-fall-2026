@@ -6,10 +6,10 @@
 <script src="slides-week-08_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="slides-week-08_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="slides-week-08_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="slides-week-08_files/libs/quarto-html/quarto-syntax-highlighting-9c5e1a58ae97b3faeeb5cca0e0e2eaf1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="slides-week-08_files/libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="slides-week-08_files/libs/quarto-contrib/countdown-0.6.0/countdown.js"></script>
 <link href="slides-week-08_files/libs/quarto-contrib/countdown-0.6.0/countdown.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.0">
+  <meta name="generator" content="quarto-1.8.26">
 
   <title>R in 3 Months Week 8 (Advanced Data Wrangling)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -18,9 +18,6 @@
   <link rel="stylesheet" href="slides-week-08_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="slides-week-08_files/libs/revealjs/dist/reveal.css">
   <style>
-    /* Default styles provided by pandoc.
-    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -33,7 +30,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="slides-week-08_files/libs/revealjs/dist/theme/quarto-904b9709d6858400bccbddab514e9f21.css">
+  <link rel="stylesheet" href="slides-week-08_files/libs/revealjs/dist/theme/quarto-3ba29524185537f454d304d0a1c4b243.css">
   <link href="slides-week-08_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="slides-week-08_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="slides-week-08_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -198,6 +195,7 @@
 <section id="dates" class="slide level2 inverse center">
 <h2>Dates</h2>
 </section></section>
+<section>
 <section id="joins" class="title-slide slide level1 center">
 <h1>Joins</h1>
 <ul>
@@ -205,10 +203,9 @@
 <li class="fragment"><p>Many-to-many joins</p></li>
 </ul>
 </section>
-
-<section id="assessment-break" class="title-slide slide level1 center">
-<h1>Assessment break</h1>
-<countdown-timer id="timer_6aee226752213ec5484e10b47d6e2fc31bf05861" minutes="01" seconds="00" class="countdown" warn-when="0" update-every="1" play-sound="false" blink-colon="false" start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<section id="assessment-break" class="slide level2 center">
+<h2>Assessment break</h2>
+<countdown-timer id="timer_8f4074b4dc5bf2661a468db0699df13dfa76d3fc" minutes="01" seconds="00" class="countdown" warn-when="0" update-every="1" play-sound="false" blink-colon="false" start-immediately="false" tabindex="0" style="top: 0;right: 0;">
  </countdown-timer>
 <div class="small">
 <p>What happens to Mick after <code>left_join(people, instruments, by = "name")</code>?</p>
@@ -270,9 +267,8 @@
 </ol>
 </div>
 </section>
-
-<section id="assessment-break-1" class="title-slide slide level1 center">
-<h1>Assessment break</h1>
+<section id="assessment-break-1" class="slide level2 center">
+<h2>Assessment break</h2>
 <div class="small">
 <p>What happens to Mick after <code>left_join(people, instruments, by = "name")</code>?</p>
 <div class="columns">
@@ -332,8 +328,7 @@
 <li><p>Mick is matched with Keith’s row because both play in a band.</p></li>
 </ol>
 </div>
-</section>
-
+</section></section>
 <section id="iteration" class="title-slide slide level1 inverse center">
 <h1>Iteration</h1>
 

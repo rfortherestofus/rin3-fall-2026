@@ -74,7 +74,7 @@ You can get feedback through the end of December
 
 - Many-to-many joins
 
-# Assessment break
+## Assessment break
 
 {{< countdown "1:00" top=0 right=0 >}}
 
@@ -115,7 +115,7 @@ C) The code throws an error because the key values don't fully match.
 D) Mick is matched with Keith's row because both play in a band.
 :::::
 
-# Assessment break
+## Assessment break
 
 ::: {.small}
 What happens to Mick after `left_join(people, instruments, by = "name")`?
