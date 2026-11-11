@@ -1,4 +1,8 @@
+# Load packages ----------------------------------------------------------
+
 library(tidyverse)
+library(readxl)
+library(janitor)
 
 # as.numeric() vs parse_number() -----------------------------------------
 
@@ -33,228 +37,223 @@ addresses <-
   )
 
 addresses |>
+  mutate(zip_code = as.numeric(address))
+
+addresses |>
   mutate(zip_code = parse_number(address))
-
-addresses |>
-  separate_wider_delim(
-    cols = address,
-    delim = ", ",
-    names = c("street_city", "state_zip")
-  ) |>
-  mutate(zip_code = parse_number(state_zip))
-
-addresses
-
-addresses |>
-  mutate(zip_code = str_extract(address, "\\d{5}$")) |>
-  mutate(zip_code = parse_number(zip_code))
-
 
 # Why save as RDS vs CSV? ------------------------------------------------
 
-names_and_ages_clean <-
-  names_and_ages |>
+# Read in the raw survey data
+
+survey_responses <-
+  read_csv("data-raw/survey_responses.csv")
+
+# response is character (<chr>)
+survey_responses
+
+# Bars are in alphabetical order
+survey_responses |>
+  count(response) |>
+  ggplot(aes(x = response, y = n)) +
+  geom_col()
+
+# Convert response to a factor
+
+survey_responses_clean <-
+  survey_responses |>
   mutate(
-    age = parse_number(age),
-    age_group = factor(
-      if_else(age < 18, "child", "adult"),
-      levels = c("child", "adult")
+    response = fct(
+      response,
+      levels = c(
+        "Strongly disagree",
+        "Disagree",
+        "Neutral",
+        "Agree",
+        "Strongly agree"
+      )
     )
   )
 
-names_and_ages_clean
+# response is now a factor (<fct>)
+survey_responses_clean
 
-names_and_ages_clean |>
-  count(age_group) |>
-  ggplot(aes(x = age_group, y = n)) +
+# Bars go from Strongly disagree to Strongly agree
+survey_responses_clean |>
+  count(response) |>
+  ggplot(aes(x = response, y = n)) +
   geom_col()
 
-write_csv(names_and_ages_clean, "data/names_and_ages.csv")
+# Save as CSV and read it back in
 
-names_and_ages_clean_csv <-
-  read_csv("data/names_and_ages.csv")
+survey_responses_clean |>
+  write_csv("data/survey_responses_clean.csv")
 
-names_and_ages_clean_csv
+survey_responses_clean_csv <-
+  read_csv("data/survey_responses_clean.csv")
 
-names_and_ages_clean_csv |>
-  count(age_group) |>
-  ggplot(aes(x = age_group, y = n)) +
+# response is character (<chr>) again: the factor levels are gone
+survey_responses_clean_csv
+
+# Bars are back in alphabetical order
+survey_responses_clean_csv |>
+  count(response) |>
+  ggplot(aes(x = response, y = n)) +
   geom_col()
 
-write_rds(names_and_ages_clean, "data/names_and_ages.rds")
+# Save as RDS and read it back in
 
-names_and_ages_clean_rds <-
-  read_rds("data/names_and_ages.rds")
+survey_responses_clean |>
+  write_rds("data/survey_responses_clean.rds")
 
-names_and_ages_clean_rds
+survey_responses_clean_rds <-
+  read_rds("data/survey_responses_clean.rds")
 
-names_and_ages_clean_rds |>
-  count(age_group) |>
-  ggplot(aes(x = age_group, y = n)) +
+# response is still a factor, with the levels in our order
+survey_responses_clean_rds
+
+# Bars are in the right order
+survey_responses_clean_rds |>
+  count(response) |>
+  ggplot(aes(x = response, y = n)) +
   geom_col()
 
 # Joins with mismatched variable types ------------------------------------
 
-fruits <-
-  tibble(
-    product_id = c(1, 2, 3, 4),
-    name = c("apple", "banana", "cherry", "date")
+# ZIP codes stored as text, with leading zeros
+zip_populations <-
+  tribble(
+    ~zip_code , ~population ,
+    "02134"   ,       21000 ,
+    "06511"   ,       33000 ,
+    "10001"   ,       27000 ,
+    "97201"   ,       16000
   )
 
-prices <-
-  tibble(
-    product_id = c("1", "2", "3", "4"),
-    price = c(0.99, 1.50, 2.00, 2.50)
-  ) |>
-  mutate(product_id = parse_number(product_id))
+zip_populations
 
-fruits
-prices
+# ZIP codes stored as numbers (leading zeros dropped)
+clinics <-
+  tribble(
+    ~clinic                , ~zip_code ,
+    "Riverside Health"     ,      2134 ,
+    "Elm Street Clinic"    ,      6511 ,
+    "Midtown Medical"      ,     10001 ,
+    "Westside Family Care" ,     97201
+  )
 
+clinics
+
+# Error: zip_code is <dbl> in one and <chr> in the other
 left_join(
-  fruits,
-  prices,
-  join_by(product_id)
+  clinics,
+  zip_populations,
+  join_by(zip_code)
 )
+
+# Convert to character: the join runs, but two clinics get NA
+# because "2134" doesn't match "02134"
+clinics |>
+  mutate(zip_code = as.character(zip_code)) |>
+  left_join(
+    zip_populations,
+    join_by(zip_code)
+  )
+
+# Pad with leading zeros so every ZIP code has five digits
+clinics |>
+  mutate(zip_code = str_pad(zip_code, width = 5, pad = "0")) |>
+  left_join(
+    zip_populations,
+    join_by(zip_code)
+  )
 
 # Many-to-many joins ------------------------------------------------------
 
-students <-
+# Each county appears once per year
+county_population <-
   tribble(
-    ~student , ~course   , ~section_id ,
-    "Alice"  , "Math"    ,           1 ,
-    "Alice"  , "English" ,           1 ,
-    "Bob"    , "Math"    ,           2
+    ~county     , ~year , ~population ,
+    "Deschutes" ,  2023 ,      208000 ,
+    "Deschutes" ,  2024 ,      211000 ,
+    "Lane"      ,  2023 ,      384000 ,
+    "Lane"      ,  2024 ,      386000 ,
+    "Multnomah" ,  2023 ,      795000 ,
+    "Multnomah" ,  2024 ,      790000
   )
 
-courses <-
+county_population
+
+county_graduation <-
   tribble(
-    ~course     , ~section_id , ~professor    ,
-    "Math"      ,           1 , "Dr. Smith"   ,
-    "Math"      ,           2 , "Dr. Jones"   ,
-    "English"   ,           1 , "Dr. Brown"   ,
-    "Chemistry" ,           1 , "Dr. Ramirez"
+    ~county     , ~year , ~graduation_rate ,
+    "Deschutes" ,  2023 ,             0.84 ,
+    "Deschutes" ,  2024 ,             0.86 ,
+    "Lane"      ,  2023 ,             0.79 ,
+    "Lane"      ,  2024 ,             0.81 ,
+    "Multnomah" ,  2023 ,             0.78 ,
+    "Multnomah" ,  2024 ,             0.80
   )
 
-students
-courses
+county_graduation
 
+# Join by county only: each row matches two rows (one per year)
+# We get a warning, 12 rows instead of 6, and year.x and year.y columns
+# where 2023 population gets paired with 2024 graduation rate
 left_join(
-  students,
-  courses,
-  join_by(course)
+  county_population,
+  county_graduation,
+  join_by(county)
 )
 
-full_join(
-  students,
-  courses,
-  join_by(course, section_id)
+# Join by county and year: each row matches exactly one row
+left_join(
+  county_population,
+  county_graduation,
+  join_by(county, year)
 )
-
 
 # Iteration --------------------------------------------------------------
 
 # Import multiple years of data
 
-library(readxl)
-library(janitor)
+tidy_gender_age_data <- function(year) {
+  raw_data_path <-
+    str_glue("data-raw/{year}-obtn-by-county.xlsx")
 
-total_population_2019 <-
   read_excel(
-    "data-raw/2019-obtn-by-county.xlsx",
-    sheet = "Total Population"
-  ) |>
-  clean_names() |>
-  mutate(year = 2019)
-
-total_population_2020 <-
-  read_excel(
-    "data-raw/2020-obtn-by-county.xlsx",
-    sheet = "Total Population"
-  ) |>
-  clean_names() |>
-  mutate(year = 2020)
-
-total_population <-
-  bind_rows(
-    total_population_2019,
-    total_population_2020
-  )
-
-total_population
-
-import_single_year_data <- function(data_year) {
-  read_excel(
-    str_glue("data-raw/{data_year}-obtn-by-county.xlsx"),
-    sheet = "Total Population"
+    path = raw_data_path,
+    sheet = "Gender Age"
   ) |>
     clean_names() |>
-    mutate(year = data_year)
+    pivot_longer(
+      cols = -geography,
+      values_to = "pct"
+    ) |>
+    separate_wider_delim(
+      cols = name,
+      delim = "_",
+      names = c("gender", "min_age", "max_age"),
+      too_few = "align_start"
+    ) |>
+    mutate(age = str_glue("{min_age}-{max_age}")) |>
+    mutate(age = str_replace(age, pattern = "-NA", "+")) |>
+    select(geography, gender, age, pct) |>
+    mutate(age = fct_inorder(age)) |>
+    mutate(data_year = year)
 }
 
-total_population_2019 <- import_single_year_data(data_year = 2019)
-total_population_2020 <- import_single_year_data(data_year = 2020)
+tidy_gender_age_data(2019)
 
-total_population <-
-  bind_rows(
-    total_population_2019,
-    total_population_2020
-  )
+obtn_gender_age_2019 <-
+  tidy_gender_age_data(year = 2019)
 
-obtn_years <- c(2019, 2020, 2021, 2022, 2023)
+obtn_gender_age_2020 <-
+  tidy_gender_age_data(year = 2020)
 
-map(
-  obtn_years,
-  import_single_year_data
-)
+years <- seq(from = 2019, to = 2023, by = 1)
 
-total_population <-
-  map(
-    obtn_years,
-    import_single_year_data
-  ) |>
+map(years, tidy_gender_age_data) |>
   bind_rows()
 
-total_population |>
-  group_by(year) |>
-  summarize(avg_population = mean(population))
-
-total_population |>
-  ggplot(
-    aes(
-      x = year,
-      y = population,
-      group = geography
-    )
-  ) +
-  geom_line()
-
 # Make multiple plots
-
-total_population_plot <- function(county_name) {
-  total_population |>
-    filter(geography == county_name) |>
-    ggplot(
-      aes(
-        x = year,
-        y = population
-      )
-    ) +
-    geom_line()
-
-  ggsave(
-    filename = str_glue("plots/{county_name}.png")
-  )
-}
-
-total_population_plot("Multnomah")
-
-oregon_counties <-
-  total_population |>
-  distinct(geography) |>
-  pull(geography)
-
-walk(
-  oregon_counties,
-  total_population_plot
-)
