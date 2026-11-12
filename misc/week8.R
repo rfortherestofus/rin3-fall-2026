@@ -42,6 +42,23 @@ addresses |>
 addresses |>
   mutate(zip_code = parse_number(address))
 
+addresses
+
+# Pull out the five digits at the end of the address
+addresses |>
+  mutate(zip_code = str_extract(address, "\\d{5}$"))
+
+tibble(
+  name = c("David", "Rachel"),
+  hometown = c("Philadelphia", "Seattle")
+)
+
+tribble(
+  ~name    , ~hometown      ,
+  "Rachel" , "Seattle"      ,
+  "David"  , "Philadelphia"
+)
+
 # Why save as RDS vs CSV? ------------------------------------------------
 
 # Read in the raw survey data
@@ -51,6 +68,9 @@ survey_responses <-
 
 # response is character (<chr>)
 survey_responses
+
+survey_responses |>
+  count(response)
 
 # Bars are in alphabetical order
 survey_responses |>
@@ -187,12 +207,12 @@ county_population
 county_graduation <-
   tribble(
     ~county     , ~year , ~graduation_rate ,
-    "Deschutes" ,  2023 ,             0.84 ,
-    "Deschutes" ,  2024 ,             0.86 ,
-    "Lane"      ,  2023 ,             0.79 ,
-    "Lane"      ,  2024 ,             0.81 ,
-    "Multnomah" ,  2023 ,             0.78 ,
-    "Multnomah" ,  2024 ,             0.80
+    "Deschutes" ,  2023 , 0.84             ,
+    "Deschutes" ,  2024 , 0.86             ,
+    "Lane"      ,  2023 , 0.79             ,
+    "Lane"      ,  2024 , 0.81             ,
+    "Multnomah" ,  2023 , 0.78             ,
+    "Multnomah" ,  2024 , 0.80
   )
 
 county_graduation
@@ -243,7 +263,7 @@ tidy_gender_age_data <- function(year) {
     mutate(data_year = year)
 }
 
-tidy_gender_age_data(2019)
+tidy_gender_age_data(2020)
 
 obtn_gender_age_2019 <-
   tidy_gender_age_data(year = 2019)
@@ -251,9 +271,36 @@ obtn_gender_age_2019 <-
 obtn_gender_age_2020 <-
   tidy_gender_age_data(year = 2020)
 
+bind_rows(obtn_gender_age_2019, obtn_gender_age_2020) |>
+  view()
+
 years <- seq(from = 2019, to = 2023, by = 1)
 
-map(years, tidy_gender_age_data) |>
+gender_age <-
+  map(years, tidy_gender_age_data) |>
   bind_rows()
 
 # Make multiple plots
+
+gender_age_plot <- function(
+  year_to_filter,
+  gender_to_filter,
+  geography_to_filter
+) {
+  gender_age |>
+    filter(data_year == year_to_filter) |>
+    filter(gender == gender_to_filter) |>
+    filter(geography == geography_to_filter) |>
+    ggplot(
+      aes(
+        x = pct,
+        y = age
+      )
+    ) +
+    geom_col()
+}
+gender_age_plot(
+  year_to_filter = 2021,
+  gender_to_filter = "males",
+  geography_to_filter = "Multnomah"
+)
