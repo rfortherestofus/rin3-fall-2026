@@ -283,13 +283,11 @@ gender_age <-
 # Make multiple plots
 
 gender_age_plot <- function(
-  year_to_filter,
-  gender_to_filter,
   geography_to_filter
 ) {
   gender_age |>
-    filter(data_year == year_to_filter) |>
-    filter(gender == gender_to_filter) |>
+    filter(data_year == 2021) |>
+    filter(gender == "females") |>
     filter(geography == geography_to_filter) |>
     ggplot(
       aes(
@@ -298,9 +296,55 @@ gender_age_plot <- function(
       )
     ) +
     geom_col()
+
+  ggsave(
+    filename = str_glue("outputs/{geography_to_filter}.png")
+  )
 }
+
+oregon_counties <- c(
+  "Baker",
+  "Benton",
+  "Clackamas",
+  "Clatsop",
+  "Columbia",
+  "Coos",
+  "Crook",
+  "Curry",
+  "Deschutes",
+  "Douglas",
+  "Gilliam",
+  "Grant",
+  "Harney",
+  "Hood River",
+  "Jackson",
+  "Jefferson",
+  "Josephine",
+  "Klamath",
+  "Lake",
+  "Lane",
+  "Lincoln",
+  "Linn",
+  "Malheur",
+  "Marion",
+  "Morrow",
+  "Multnomah",
+  "Polk",
+  "Sherman",
+  "Tillamook",
+  "Umatilla",
+  "Union",
+  "Wallowa",
+  "Wasco",
+  "Washington",
+  "Wheeler",
+  "Yamhill"
+)
+
 gender_age_plot(
-  year_to_filter = 2021,
-  gender_to_filter = "males",
   geography_to_filter = "Multnomah"
+)
+walk(
+  oregon_counties,
+  gender_age_plot
 )
