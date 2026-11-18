@@ -58,7 +58,7 @@ Remaining weeks:
 
 # Housekeeping
 
-- You can get feedback from your coach through the end of June
+- You can get feedback from your coach through the end of December
 - You have access to materials FOREVER!
 
 # Advanced Data Viz {.inverse}
@@ -70,6 +70,46 @@ This week you learned about:
 - Using color to highlight findings
 - Adding descriptive labels
 - Using annotations
+:::
+
+## Assessment break
+
+{{< countdown "1:00" top=0 right=0 >}}
+
+::: {.small}
+How would you improve this chart? Name as many fixes as you can.
+
+```{r}
+#| echo: false
+library(ggplot2)
+
+coffee <- tibble::tibble(
+  drink = c("Latte", "Espresso", "Cappuccino", "Mocha", "Americano", "Tea"),
+  n     = c(120, 45, 90, 30, 75, 20)
+)
+
+ggplot(coffee, aes(x = drink, y = n, fill = drink)) +
+  geom_col(color = "black") +
+  labs(title = "Plot") +
+  theme_gray() +
+  theme(
+    axis.text.x      = element_text(angle = 90),
+    panel.grid.minor = element_line(color = "grey40"),
+    panel.grid.major = element_line(color = "grey30")
+  )
+```
+:::
+
+## Assessment break
+
+::: {.small}
+Some possible improvements:
+
+- **Reorder** the bars by sales with `fct_reorder()`, or flip to horizontal bars.
+- **Use color strategically**: drop the rainbow fill and highlight one bar (e.g., Latte).
+- **Declutter**: remove the legend, dark gridlines and grey background; no need for rotated labels once the bars are horizontal.
+- **Label descriptively**: replace `n` and `drink` with meaningful axis labels.
+- **Title the finding**: e.g., "Lattes outsell every other drink", aligned to the plot edge.
 :::
 
 # CBEM Bar Chart Live Coding
